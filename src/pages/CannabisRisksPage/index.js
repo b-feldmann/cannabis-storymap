@@ -52,7 +52,11 @@ export default class CannabisRiskPage extends Component {
         <Row type='flex' gutter={16}>
           <Col span={20} offset={2}>
             <Card title="Risks of consuming cannabis" align='justify'>
-              <Table columns={columns} dataSource={data} />
+              Mental Disorder<br/><br/>
+
+              Driving under influence<br/><br/>
+
+              consumption of other drugs
             </Card>
           </Col>
           <Col span={2}/>
