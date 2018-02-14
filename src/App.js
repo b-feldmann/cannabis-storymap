@@ -17,6 +17,7 @@ class App extends Component {
         <ScrollContainer>
           <ScrollSection pageId={0}>
             <div className='full-height green-background'>
+              {/*<UsaCannabisInfoPage/>*/}
               <CannKgPage/>
               {/*<UsaCannabisLegalizedPage/>*/}
             </div>
