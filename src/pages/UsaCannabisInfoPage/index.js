@@ -21,16 +21,14 @@ export default class UsaCannabisInfoPage extends Component {
       <div>
         <Row type='flex' gutter={16}>
           <Col span={20} offset={2}>
-            <Card title="Regulation in USA" align='justify'>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-              Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            <Card title="Percentage of Cannabis User 2015" align='justify'>
+              <OneSidedMap data={cannabis_info.data.by_state}/>
             </Card>
           </Col>
           <Col span={2}/>
         </Row>
 
-        <Row type='flex' gutter={16}>
+        {/*<Row type='flex' gutter={16}>
           <Col span={10} offset={2}>
             <Card align='justify' title='Percentage of Cannabis User 2015'>
               <OneSidedMap data={cannabis_info.data.by_state}/>
@@ -55,7 +53,7 @@ export default class UsaCannabisInfoPage extends Component {
             </Row>
           </Col>
           <Col span={2}/>
-        </Row>
+        </Row>*/}
       </div>
     );
   }
