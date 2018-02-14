@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './styles.css';
 import OneSidedMap from "./OneSidedMap";
-import { Slider } from 'antd';
+import { Slider, notification } from 'antd';
 
 export default class TwoSidedMap extends Component {
   constructor(props) {
@@ -14,10 +14,6 @@ export default class TwoSidedMap extends Component {
     };
   }
 
-  mapHandler = (event) => {
-    alert(event.target.dataset.name);
-  };
-
   onChange = (value) => {
     this.setState({
       clipPosition: value,
@@ -26,6 +22,14 @@ export default class TwoSidedMap extends Component {
 
   onChangeDimension = (dimen) => {
     this.setState({ childWidth: dimen.width, childHeight: dimen.height });
+  };
+
+  showData = (state, data) => {
+    notification.destroy();
+    notification.info({
+      message: state,
+      description: data[state]
+    });
   };
 
   render() {
@@ -39,10 +43,12 @@ export default class TwoSidedMap extends Component {
           <Slider min={0} max={100} value={this.state.clipPosition} onChange={this.onChange}/>
         </div>
         <OneSidedMap onDimenChange={this.onChangeDimension}
+                     onHover={this.showData}
                      data={this.props.data} colors={['#FFFF00', '#FF0000']} startClip={'0px'}
-                     endClip={`${this.state.clipPosition / 2}vw`}/>
-        <OneSidedMap data={this.props.data} colors={['#00FFFF', '#0000FF']}
-                     startClip={`${this.state.clipPosition / 2}vw`}
+                     endClip={`${this.state.clipPosition / 2 - 0.1}vw`}/>
+        <OneSidedMap onHover={this.showData}
+                     data={this.props.data} colors={['#00FFFF', '#0000FF']}
+                     startClip={`${this.state.clipPosition / 2 + 0.1}vw`}
                      endClip={'100vw'}/>
       </div>
     );

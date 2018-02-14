@@ -59,11 +59,11 @@ stateMap['WI'] = 'Wisconsin';
 stateMap['WV'] = 'West Virginia';
 stateMap['WY'] = 'Wyoming';
 
-// export default function resolveStateCode(stateCode){
-//   return stateMap[stateCode];
-// }
+export function resolveStateCode(stateCode){
+  return stateMap[stateCode];
+}
 
-export default function resolveState(state) {
+export function resolveState(state) {
   const keys = Object.keys(stateMap);
   for (let index in keys) {
     if (keys.hasOwnProperty(index)) {

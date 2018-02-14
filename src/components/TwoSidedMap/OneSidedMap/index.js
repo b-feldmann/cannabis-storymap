@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import USAMap from "react-usa-map";
+// import USAMap from "react-usa-map";
 
 import sizeMe from 'react-sizeme'
 import { colorInterpolation } from 'color-interpolator';
-import stateCodes from './stateCodes';
+import {resolveState, resolveStateCode} from './stateCodes';
 import './styles.css';
+import USAMap from "../../USAMap";
 
 class OneSidedMap extends Component {
-
   mapHandler = (event) => {
-    console.log(event.target);
-    // alert(event.target.dataset.name);
+    if(this.props.onHover){
+      this.props.onHover(resolveStateCode(event.target.dataset.name), this.props.data);
+    }
   };
 
   interpolate = (start, end, t) => {
@@ -25,7 +26,7 @@ class OneSidedMap extends Component {
 
     for (let index in stateKeys) {
       if (stateKeys.hasOwnProperty(index)) {
-        const code = stateCodes(stateKeys[index]);
+        const code = resolveState(stateKeys[index]);
         if (this.props.colors) {
           config[code] = { fill: this.interpolate(this.props.colors[0], this.props.colors[1], this.props.data[stateKeys[index]] * 2) };
         } else
@@ -48,11 +49,12 @@ class OneSidedMap extends Component {
         <div style={{
           position: 'absolute',
           left: '50%',
-          transform: 'translate(-50%, 0)',
+          top: '50%',
+          transform: 'translate(-50%, -50%)',
           clip: `rect(0,${this.props.endClip},100vh,${this.props.startClip})`
         }}>
           <USAMap style={{ width: '100%' }}
-                  customize={this.statesCustomConfig()} onClick={this.mapHandler}/>
+                  customize={this.statesCustomConfig()} onHover={this.mapHandler}/>
         </div>
       );
     }
@@ -60,7 +62,8 @@ class OneSidedMap extends Component {
     return (
       <div>
         <USAMap style={{ width: '100%' }}
-                customize={this.statesCustomConfig()} onClick={this.mapHandler}/>
+                customize={this.statesCustomConfig()}
+                onHover={this.mapHandler}/>
       </div>
     );
   }
