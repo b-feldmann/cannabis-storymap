@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 
 import { Table, Icon, Divider } from 'antd';
 
+import CannCocaine from './mrj_cocaine.png';
+import CannHeroine from './mrj_heroine.png';
+import CannLsd from './mrj_lsd.png';
+import LsdCann from './lsd_mrj.png';
+
 import './styles.css'
 import Card from "antd/es/card/index";
 import Col from "antd/es/grid/col";
@@ -50,9 +55,27 @@ export default class DrugComparisonPage extends Component {
     return(
       <div>
         <Row type='flex' gutter={16}>
-          <Col span={20} offset={2}>
-            <Card title="This is the Drug Comparison Page" align='justify'>
-              <Table columns={columns} dataSource={data} />
+          <Col span={10} offset={2}>
+            <Card title="Cocaine" align='justify'>
+              <img className="full-img" alt="cann-cocaine" src={CannCocaine} />
+            </Card>
+          </Col>
+          <Col span={10}>
+            <Card title="Heroine" align='justify'>
+              <img className="full-img" alt="cann-heroine" src={CannHeroine}/>
+            </Card>
+          </Col>
+          <Col span={2}/>
+        </Row>
+        <Row type='flex' gutter={16}>
+          <Col span={10} offset={2}>
+            <Card title="LSD" align='justify'>
+              <img className="full-img" alt="cann-lsd" src={CannLsd} />
+            </Card>
+          </Col>
+          <Col span={10}>
+            <Card title="LSD" align='justify'>
+              <img className="full-img" alt="lsd-cann" src={LsdCann}/>
             </Card>
           </Col>
           <Col span={2}/>
