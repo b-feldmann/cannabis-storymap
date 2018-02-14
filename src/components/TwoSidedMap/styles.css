@@ -1,6 +1,28 @@
+.two-sided-map-slider {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.two-sided-map-slider > .ant-slider > .ant-slider-rail {
+    visibility: hidden;
+}
+
+.two-sided-map-slider > .ant-slider > .ant-slider-track {
+    visibility: hidden;
+    background-color: transparent;
+}
+
+.two-sided-map-slider > .ant-slider > .ant-slider-handle {
+    width: 14px;
+    height: 32px;
+    border-radius: 0px;
+}
+
 path {
     pointer-events: all;
 }
+
 path:hover {
     opacity: 0.50;
     cursor: pointer;
@@ -49,9 +71,11 @@ path:hover {
     border-left: 5px solid rgba(0, 0, 0, 0.5);
     border-right: 5px solid rgba(0, 0, 0, 0.5);
 }
+
 .Resizer.disabled {
     cursor: not-allowed;
 }
+
 .Resizer.disabled:hover {
     border-color: transparent;
 }

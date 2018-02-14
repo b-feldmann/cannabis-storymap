@@ -19,7 +19,6 @@ class App extends Component {
             <div className='full-height green-background'>
               {/*<UsaCannabisInfoPage/>*/}
               <CannKgPage/>
-              {/*<UsaCannabisLegalizedPage/>*/}
             </div>
           </ScrollSection>
 

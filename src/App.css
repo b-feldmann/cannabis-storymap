@@ -39,6 +39,10 @@
   padding-bottom: 32px;
 }
 
+.max-height {
+  height: calc(100vh - 96px);
+}
+
 .App {
   text-align: center;
   height: 100%;
