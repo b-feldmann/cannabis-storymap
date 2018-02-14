@@ -8,6 +8,7 @@ import DrugComparisonPage from "./pages/DrugComparisonPage";
 import CannabisRiskPage from "./pages/CannabisRisksPage";
 import PoliticalViewPage from "./pages/PoliticalViewPage";
 import { ScrollContainer, ScrollSection } from "./components/OnePageScroll";
+import UsaCannabisLegalizedPage from "./pages/UsaCannabisLegalizedPage";
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
           <ScrollSection pageId={0}>
             <div className='full-height green-background'>
               <CannKgPage/>
+              {/*<UsaCannabisLegalizedPage/>*/}
             </div>
           </ScrollSection>
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import USAMap from "react-usa-map";
+import SplitPane from 'react-split-pane';
 import './styles.css';
 
 export default class TwoSidedMap extends Component {
@@ -9,14 +10,11 @@ export default class TwoSidedMap extends Component {
   };
 
   render() {
-    const style = {
-      position: 'relative',
-      width: '80%',
-      height: '60%'
-    };
-
     return <div>
-      <USAMap width='100%' onClick={this.mapHandler} />
+      <SplitPane split="vertical" primary='first'>
+        <USAMap width='100%' onClick={this.mapHandler} />
+        <USAMap width='100%' onClick={this.mapHandler} />
+      </SplitPane>
     </div>
   }
 }
