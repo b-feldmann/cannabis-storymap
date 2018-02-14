@@ -26,19 +26,21 @@ class App extends Component {
             </div>
           </ScrollSection>
 
+          /*
           <ScrollSection pageId={2}>
             <div className='full-height red-background'>
               <CannabisRiskPage/>
             </div>
           </ScrollSection>
+          */
 
-          <ScrollSection pageId={3}>
-            <div className='full-height grey-background'>
+          <ScrollSection pageId={2}>
+            <div className='grey-background'>
               <DrugComparisonPage/>
             </div>
           </ScrollSection>
 
-          <ScrollSection pageId={4}>
+          <ScrollSection pageId={3}>
             <div className='full-height yellow-background'>
               <PoliticalViewPage/>
             </div>
