@@ -38,15 +38,6 @@ export default class CannKgPage extends Component {
 
         <Row type='flex' gutter={16}>
           <Col span={20} offset={2}>
-            <Card title="Contents of the CannKG" align='justify'>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-            </Card>
-          </Col>
-          <Col span={2}/>
-        </Row>
-
-        <Row type='flex' gutter={16}>
-          <Col span={20} offset={2}>
             <Card title="Comparison with the USA" align='justify'>
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
             </Card>
