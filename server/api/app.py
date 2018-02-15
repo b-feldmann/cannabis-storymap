@@ -99,10 +99,10 @@ def outcome_years_for_state(state, target, agegrp):
     if schema == 'TRAFFIC_NORMALIZED':
         query = '''SELECT "State", {} as "Value", YEAR as "Year"
                    FROM "TUKGRP1".{}
-                   WHERE "State" = {}'''.format(outcome, schema, state)
+                   WHERE "State" = \'{}\''''.format(outcome, schema, state)
     else:
         query = '''
-            SELECT s."_state" as "State", s."bsae" as "Value"
+            SELECT s."_state" as "State", s."bsae" as "Value",
                    s."_year_end" as "Year"
             FROM {} s
             WHERE
@@ -114,7 +114,7 @@ def outcome_years_for_state(state, target, agegrp):
     results = execute_query(query)
     response = {}
     for row in results:
-        response[row[1]] = row[2]
+        response[row[2]] = float(row[1])
     return response
 
 
@@ -126,7 +126,7 @@ def outcome_states_for_year(year, target, agegrp):
                    WHERE "YEAR" = {}'''.format(outcome, schema, year)
     else:
         query = '''
-            SELECT s."_state" as "State", s."bsae" as "Value"
+            SELECT s."_state" as "State", s."bsae" as "Value",
                    s."_year_end" as "Year"
             FROM {} s
             WHERE
@@ -138,7 +138,7 @@ def outcome_states_for_year(year, target, agegrp):
     results = execute_query(query)
     response = {}
     for row in results:
-        response[row[0]] = row[1]
+        response[row[0]] = float(row[1])
     return response
 
 
@@ -154,15 +154,15 @@ def avg_by_legal_status_timeseries(target, legal_status, agegrp):
             JOIN LEGAL_STATUS_CURRENT ls
               ON s."State" = ls.STATE
             GROUP BY ls."{0}", s.YEAR
-            ORDER BY ls."{0}" ASC,
-            s.YEAR ASC
+            ORDER BY s.YEAR ASC,
+            ls."{0}" ASC
         '''.format(legal_status, outcome, schema)
     else:
         query = '''
             SELECT
               ls."{0}" as "LegalStatus",
               s."_year_end" as "Year",
-              AVG(s."bsae") as "Pct"
+              AVG(s."bsae") as "Value"
             FROM {1} s
             JOIN LEGAL_STATUS_CURRENT ls
               ON s."_state" = ls.STATE
@@ -180,12 +180,12 @@ def avg_by_legal_status_timeseries(target, legal_status, agegrp):
     elem = {}
     cur_year = 0
     for row in results:
-        if row[1] > cur_year:
+        if int(row[1]) > cur_year:
             if elem:
                 response.append(elem)
-            cur_year = row[1]
+            cur_year = int(row[1])
             elem = {'year': cur_year}
-        elem[row[0]] = row[2]
+        elem[row[0]] = float(row[2])
     return response
 
 
