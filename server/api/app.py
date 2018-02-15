@@ -1,4 +1,3 @@
-from collections import defaultdict
 from flask import Flask
 import pyhdb
 import socket
@@ -8,6 +7,15 @@ import json
 USER = ''
 PW = ''
 HOST = ''
+
+TARGET_MAPPING = {
+    'MJ': ('NSDUH_STATES', 'MRJYR'),
+    'COC': ('NSDUH_STATES', 'COCYR'),
+    'TRAFFIC': ('TRAFFIC_NORMALIZED', 'INCIDENTS_NORM'),
+    'LEGAL': ('LEGAL_STATUS_CURRENT', 'POSSESSIONRECREATIONAL'),
+    'MENTAL': ('NSDUH_STATES', 'AMIYR'),
+    'CRIME': ('CRIME_CLEAN', 'VIOLENT_CRIME_PER_PERSON')
+}
 
 
 class HanaConnection(object):
@@ -40,119 +48,159 @@ app = Flask(__name__)
 
 @app.after_request
 def after_request(response):
-  response.headers.add('Access-Control-Allow-Origin', '*')
-  response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
-  response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
-  return response
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers',
+                         'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods',
+                         'GET,PUT,POST,DELETE,OPTIONS')
+    return response
 
 
-@app.route('/state/<state>')
-def get_statedata(state):
+@app.route('/state/<state>/<target>')
+def get_statedata(state, target):
     params = {
         'state': state,
+        'target': target,
         'age_group': 4
     }
 
-    response = {}
-    response['by_state'] = by_state(params['attribute'])
-    response['by_legal_status'] = avg_by_legal_status(
-        params['attribute'], params['legal_status']
-    )
-    response['by_legal_status_timeseries'] = avg_by_legal_status_timeseries(
-        params['attribute'], params['legal_status']
-    )
-
+    response = outcome_years_for_state(params['state'], params['target'],
+                                       params['age_group'])
     return prepare_view(response, params)
 
 
-@app.route('/map')
-def get_mapdata(outcome='MRJYR'):
+@app.route('/legal/<legalstatus>/<target>')
+def get_legaldata(legalstatus, target):
     params = {
-        'attribute': outcome,
-        'legal_status': 'POSSESSIONRECREATIONAL',
-        'year_min': 2015,
-        'year_max': 2015,
+        'target': target,
+        'legalstatus': legalstatus,
         'age_group': 4
     }
 
-    response = {}
-    response['by_state'] = by_state(params['attribute'])
-    response['by_legal_status'] = avg_by_legal_status(
-        params['attribute'], params['legal_status']
-    )
-    response['by_legal_status_timeseries'] = avg_by_legal_status_timeseries(
-        params['attribute'], params['legal_status']
+    response = avg_by_legal_status_timeseries(
+        params['target'], params['legalstatus'], params['age_group']
     )
 
     return prepare_view(response, params)
 
 
-def by_state(attribute):
-    query = f'''
-        SELECT s."_state" as "State", s."bsae" as "Pct"
-        FROM NSDUH_STATES s
-        JOIN LEGAL_STATUS_CURRENT ls
-          ON s."_state" = ls.STATE
-        WHERE
-          /* Codeword */
-          s."outcome" = '{attribute}'
-          /* Filter by year */
-          AND s."_year_end" >= 2015 AND s."_year_end" <= 2015
-          /* TODO: Average over age groups */
-          AND s."agegrp" = 4;
-    '''
+@app.route('/map/<year>/<target>')
+def get_mapdata(year, target):
+    params = {
+        'target': target,
+        'year': year,
+        'age_group': 4
+    }
+
+    response = outcome_states_for_year(params['year'], params['target'],
+                                       params['age_group'])
+    return prepare_view(response, params)
+
+
+def outcome_years_for_state(state, target, agegrp):
+    schema, outcome = TARGET_MAPPING[target]
+    if schema == 'TRAFFIC_NORMALIZED' or schema == 'CRIME_CLEAN':
+        query = '''SELECT "State", {} as "Value", YEAR as "Year"
+                   FROM "TUKGRP1".{}
+                   WHERE UPPER("State") = UPPER(\'{}\')'''.format(outcome,
+                                                                  schema,
+                                                                  state)
+    else:
+        query = '''
+            SELECT s."_state" as "State", s."bsae" as "Value",
+                   s."_year_end" as "Year"
+            FROM {} s
+            WHERE
+              /* Codeword */
+              s."outcome" = \'{}\'
+              AND s."_state" = \'{}\'
+              AND s."agegrp" = {};
+        '''.format(schema, outcome, state, agegrp)
     results = execute_query(query)
     response = {}
     for row in results:
-        response[row[0]] = row[1]
+        response[row[2]] = float(row[1])
     return response
 
 
-def avg_by_legal_status(attribute, legal_status):
-    query = f'''
-        SELECT ls."{legal_status}", AVG(s."bsae") as "Pct"
-        FROM NSDUH_STATES s
-        JOIN LEGAL_STATUS_CURRENT ls
-          ON s."_state" = ls.STATE
-        WHERE
-          /* Codeword */
-          s."outcome" = '{attribute}'
-          /* Filter by year */
-          AND s."_year_end" >= 2015 AND s."_year_end" <= 2015
-          /* TODO: Average over age groups */
-          AND s."agegrp" = 4
-        GROUP BY ls."{legal_status}"
-    '''
+def outcome_states_for_year(year, target, agegrp):
+    schema, outcome = TARGET_MAPPING[target]
+    if schema == 'TRAFFIC_NORMALIZED' or schema == 'CRIME_CLEAN':
+        query = '''SELECT "State", {} as "Value", YEAR as "Year"
+                   FROM "TUKGRP1".{}
+                   WHERE "YEAR" = {}'''.format(outcome, schema, year)
+    elif schema == 'LEGAL_STATUS_CURRENT':
+        query = '''SELECT STATE,
+        (CASE
+        WHEN {0}='felony' THEN 0
+        WHEN {0}='midemeanor' THEN 1
+        WHEN {0}='decriminalized' THEN 2
+        ELSE 3
+        END)
+        FROM "TUKGRP1"."{1}"
+        '''.format(outcome, schema)
+    else:
+        query = '''
+            SELECT s."_state" as "State", s."bsae" as "Value",
+                   s."_year_end" as "Year"
+            FROM {} s
+            WHERE
+              /* Codeword */
+              s."outcome" = \'{}\'
+              AND s."_year_end" = \'{}\'
+              AND s."agegrp" = {};
+        '''.format(schema, outcome, year, agegrp)
     results = execute_query(query)
     response = {}
     for row in results:
-        response[row[0]] = row[1]
+        response[row[0]] = float(row[1])
     return response
 
 
-def avg_by_legal_status_timeseries(attribute, legal_status):
-    query = f'''
-        SELECT
-          ls."{legal_status}" as "LegalStatus",
-          s."_year_end",
-          AVG(s."bsae") as "Pct"
-        FROM NSDUH_STATES s
-        JOIN LEGAL_STATUS_CURRENT ls
-          ON s."_state" = ls.STATE
-        WHERE
-          /* Codeword */
-          s."outcome" = '{attribute}'
-          /* TODO: Average over age groups */
-          AND s."agegrp" = 4
-        GROUP BY ls."{legal_status}", s."_year_end"
-        ORDER BY
-          ls."{legal_status}" ASC,
-          s."_year_end" ASC
-    '''
+def avg_by_legal_status_timeseries(target, legal_status, agegrp):
+    schema, outcome = TARGET_MAPPING[target]
+    if schema == 'TRAFFIC_NORMALIZED':
+        query = '''
+            SELECT
+              ls."{0}" as "LegalStatus",
+              s.YEAR as "Year",
+              AVG({1}) as "Value"
+            FROM {2} s
+            JOIN LEGAL_STATUS_CURRENT ls
+              ON UPPER(s."State") = UPPER(ls.STATE)
+            GROUP BY ls."{0}", s.YEAR
+            ORDER BY s.YEAR ASC,
+            ls."{0}" ASC
+        '''.format(legal_status, outcome, schema)
+    else:
+        query = '''
+            SELECT
+              ls."{0}" as "LegalStatus",
+              s."_year_end" as "Year",
+              AVG(s."bsae") as "Value"
+            FROM {1} s
+            JOIN LEGAL_STATUS_CURRENT ls
+              ON s."_state" = ls.STATE
+            WHERE
+              /* Codeword */
+              s."outcome" = '{2}'
+              AND s."agegrp" = {3}
+            GROUP BY ls."{0}", s."_year_end"
+            ORDER BY
+              s."_year_end" ASC,
+              ls."{0}" ASC
+    '''.format(legal_status, schema, outcome, agegrp)
     results = execute_query(query)
-    response = defaultdict(dict)
+    response = []
+    elem = {}
+    cur_year = 0
     for row in results:
-        response[row[0]][row[1]] = row[2]
+        if int(row[1]) > cur_year:
+            if elem:
+                response.append(elem)
+            cur_year = int(row[1])
+            elem = {'year': cur_year}
+        elem[row[0]] = float(row[2])
     return response
 
 

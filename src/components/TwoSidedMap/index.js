@@ -32,8 +32,29 @@ export default class TwoSidedMap extends Component {
     });
   };
 
+  getRange = (data) => {
+    const keys = Object.keys(data);
+    let min, max;
+    for (let index in keys) {
+      if (keys.hasOwnProperty(index)) {
+        if (min) min = Math.min(min, data[keys[index]]);
+        else min = data[keys[index]];
+
+        if (max) max = Math.max(max, data[keys[index]]);
+        else max = data[keys[index]];
+      }
+    }
+
+    return [min, max];
+  };
+
   render() {
     const clipPos = `${this.state.childWidth / (100 / this.state.clipPosition)}px`;
+    let leftRange = this.getRange(this.props.leftData);
+    let rightRange = this.getRange(this.props.rightData);
+
+    if(this.props.leftRange) leftRange = this.props.leftRange;
+    if(this.props.rightRange) rightRange = this.props.rightRange;
 
     return (
       <div className='two-sided-map-container'>
@@ -44,12 +65,14 @@ export default class TwoSidedMap extends Component {
         }}>
           <Slider min={0} max={100} value={this.state.clipPosition} onChange={this.onChange}/>
         </div>
-        <OneSidedMap dataMul={4}
+        <OneSidedMap
+          min={leftRange[0]} max={leftRange[1]}
           onDimenChange={this.onChangeDimension}
                      onHover={this.showData}
                      data={this.props.leftData} colors={['#FFFF00', '#FF0000']} startClip={'0px'}
                      endClip={clipPos}/>
-        <OneSidedMap dataMul={1000}
+        <OneSidedMap
+          min={rightRange[0]} max={rightRange[1]}
           onHover={this.showData}
                      data={this.props.rightData} colors={['#00FFFF', '#0000FF']}
                      startClip={clipPos}
