@@ -17,8 +17,9 @@ class App extends Component {
       <div className="App">
         <ScrollContainer>
           <ScrollSection pageId={0}>
-            {/*<UsaCannabisComparismPage/>*/}
-            <CannKgPage/>
+            <UsaCannabisComparismPage/>
+            {/*<UsaCannabisInfoPage/>*/}
+            {/*<CannKgPage/>*/}
           </ScrollSection>
 
           <ScrollSection pageId={1}>

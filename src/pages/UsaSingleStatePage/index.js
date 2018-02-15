@@ -77,14 +77,12 @@ export default class SingleStatePage extends Component {
     const side = (
       <div>
         <h1>Conclusion</h1>
-        <div  style={{paddingLeft: 15, paddingRight: 15, paddingTop: 80}}>
         We only found weak correlations between use of cannabis and use of other drugs, traffic incidents, mental health, and crime rates.<br/>
         In fact, Colorado, despite having one of the highest cannabis consumptions in the US, has a comparably low rate of traffic incidents.
         <br/><br/>
         The chart on the left shows, that the legalization of cannabis in 2012 in Colorado has had no significant effect on cocain consumption.
         <br/><br/>
         More information can be found in the <a href="https://www.drogenbeauftragte.de/presse/pressekontakt-und-mitteilungen/2017/2017-4-quartal/aktuelle-studie-des-klinikums-der-universitaet-muenchen-cannabis-potential-und-risiken-eine-wissenschaftliche-analyse-capris.html">CaPRis study</a>.
-        </div>
       </div>
     );
 

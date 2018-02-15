@@ -24,9 +24,13 @@ export default class SplitLayout extends Component {
             </Row>
           </Col>
           <Col span={hasSide ? 6 : 0} className='left-bar'>
-            <div className='layout-side-content'>
-              {this.props.side}
-            </div>
+            <Row>
+              <Col span={20} offset={2}>
+                <div className='layout-side-content'>
+                  {this.props.side}
+                </div>
+              </Col>
+            </Row>
           </Col>
           <Col span={hasSide ? 1 : 0}></Col>
         </Row>

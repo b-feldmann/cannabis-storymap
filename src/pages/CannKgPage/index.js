@@ -14,7 +14,6 @@ export default class CannKgPage extends Component {
     const side = (
       <div>
         <h1>Situation in Germany</h1>
-        <div style={{paddingLeft: 15, paddingRight: 15}}>
         There is a current debate on the legalization of cannabis in germany.
         The political party "Bündnis 90/Die Grüne" proposed the "Cannabiskontrollgesetz" (abbr. CannKG, cannabis
         control law)
@@ -30,7 +29,6 @@ export default class CannKgPage extends Component {
         Read the <a href="https://dip21.bundestag.de/dip21/btd/18/042/1804204.pdf">
           CannKG
         </a>.
-        </div>
       </div>
     );
 

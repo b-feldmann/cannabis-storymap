@@ -74,8 +74,7 @@ class OneSidedMap extends Component {
           transform: 'translate(-50%, 0)',
           clip: `rect(0,${this.props.endClip},100vh,${this.props.startClip})`
         }}>
-          <USAMap style={{ width: '100%' }}
-                  customize={this.statesCustomConfig(min, max)} onHover={this.mapHandler}/>
+          <USAMap customize={this.statesCustomConfig(min, max)} onHover={this.mapHandler}/>
         </div>
       );
     }

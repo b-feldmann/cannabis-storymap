@@ -4,9 +4,9 @@ import socket
 import json
 
 
-USER = ''
-PW = ''
-HOST = ''
+USER = 'TUKGRP1'
+PW = 'Initial2'
+HOST = '192.168.31.57'
 
 TARGET_MAPPING = {
     'MJ': ('NSDUH_STATES', 'MRJYR'),

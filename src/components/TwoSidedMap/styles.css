@@ -1,3 +1,7 @@
+.two-sided-map-container {
+    width: 100%;
+}
+
 .two-sided-map-slider {
     position: absolute;
     left: 50%;
