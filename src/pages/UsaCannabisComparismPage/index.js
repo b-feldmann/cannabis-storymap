@@ -42,6 +42,25 @@ export default class UsaCannabisComparismPage extends Component {
     });
   };
 
+  getRange = (dataList) => {
+    let min, max;
+
+    dataList.forEach(data => {
+      const keys = Object.keys(data);
+      for (let index in keys) {
+        if (keys.hasOwnProperty(index)) {
+          if (min) min = Math.min(min, data[keys[index]]);
+          else min = data[keys[index]];
+
+          if (max) max = Math.max(max, data[keys[index]]);
+          else max = data[keys[index]];
+        }
+      }
+    });
+
+    return [min, max];
+  };
+
   render() {
     const marks = {
       2009: '2009',
@@ -91,12 +110,15 @@ export default class UsaCannabisComparismPage extends Component {
         break;
     }
 
+    const leftRange = this.getRange([cannabis_2009, cannabis_2010, cannabis_2011, cannabis_2012, cannabis_2013, cannabis_2014, cannabis_2015]);
+    const rightRange = this.getRange([incidents_2009, incidents_2010, incidents_2011, incidents_2012, incidents_2013, incidents_2014, incidents_2015]);
+
     return (
       <div>
         <Row type='flex' gutter={16}>
           <Col span={20} offset={2}>
             <Card className='max-height' title="Cannabis User vs Traffic Incidents" align='justify'>
-              <TwoSidedMap leftData={cannabis} rightData={incidents}/>
+              <TwoSidedMap leftData={cannabis} leftRange={leftRange} rightData={incidents} rightRange={rightRange}/>
               <Row>
                 <Col span={12}>
                   <Select defaultValue="cannuser">

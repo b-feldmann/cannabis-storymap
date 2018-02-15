@@ -3,13 +3,17 @@ import React, { Component } from 'react';
 
 import sizeMe from 'react-sizeme'
 import { colorInterpolation } from 'color-interpolator';
-import {resolveState, resolveStateCode} from './stateCodes';
+import { resolveState, resolveStateCode } from './stateCodes';
 import './styles.css';
 import USAMap from "../../USAMap";
 
 class OneSidedMap extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   mapHandler = (event) => {
-    if(this.props.onHover){
+    if (this.props.onHover) {
       this.props.onHover(resolveStateCode(event.target.dataset.name), this.props.data);
     }
   };
@@ -19,18 +23,21 @@ class OneSidedMap extends Component {
   };
 
   /* optional customization of filling per state and calling custom callbacks per state */
-  statesCustomConfig = () => {
+  statesCustomConfig = (min, max) => {
     const config = {};
-
     const stateKeys = Object.keys(this.props.data);
+
+    function normalize(val) {
+      return (val - min) / (max - min);
+    }
 
     for (let index in stateKeys) {
       if (stateKeys.hasOwnProperty(index)) {
         const code = resolveState(stateKeys[index]);
         if (this.props.colors) {
-          config[code] = { fill: this.interpolate(this.props.colors[0], this.props.colors[1], this.props.data[stateKeys[index]] * this.props.dataMul) };
+          config[code] = { fill: this.interpolate(this.props.colors[0], this.props.colors[1], normalize(this.props.data[stateKeys[index]])) };
         } else
-          config[code] = { fill: this.interpolate('#FFFFFF', '#000000', this.props.data[stateKeys[index]] * this.props.dataMul) };
+          config[code] = { fill: this.interpolate('#FFFFFF', '#000000', normalize(this.props.data[stateKeys[index]])) };
       }
     }
 
@@ -44,6 +51,21 @@ class OneSidedMap extends Component {
   }
 
   render() {
+    const keys = Object.keys(this.props.data);
+    let min, max;
+    for (let index in keys) {
+      if (keys.hasOwnProperty(index)) {
+        if (min) min = Math.min(min, this.props.data[keys[index]]);
+        else min = this.props.data[keys[index]];
+
+        if (max) max = Math.max(max, this.props.data[keys[index]]);
+        else max = this.props.data[keys[index]];
+      }
+    }
+
+    if(this.props.min) min = this.props.min;
+    if(this.props.max) max = this.props.max;
+
     if (this.props.startClip && this.props.endClip) {
       return (
         <div style={{
@@ -54,7 +76,7 @@ class OneSidedMap extends Component {
           clip: `rect(0,${this.props.endClip},100vh,${this.props.startClip})`
         }}>
           <USAMap style={{ width: '100%' }}
-                  customize={this.statesCustomConfig()} onHover={this.mapHandler}/>
+                  customize={this.statesCustomConfig(min, max)} onHover={this.mapHandler}/>
         </div>
       );
     }
@@ -62,7 +84,7 @@ class OneSidedMap extends Component {
     return (
       <div>
         <USAMap style={{ width: '100%' }}
-                customize={this.statesCustomConfig()}
+                customize={this.statesCustomConfig(min, max)}
                 onHover={this.mapHandler}/>
       </div>
     );
