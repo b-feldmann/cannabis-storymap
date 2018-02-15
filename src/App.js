@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import CannKgPage from './pages/CannKgPage';
 import UsaCannabisInfoPage from './pages/UsaCannabisInfoPage';
-import DrugComparisonPage from "./pages/DrugComparisonPage";
 import CannabisRiskPage from "./pages/CannabisRisksPage";
 import PoliticalViewPage from "./pages/PoliticalViewPage";
 import { ScrollContainer, ScrollSection } from "./components/OnePageScroll";
@@ -19,20 +17,16 @@ class App extends Component {
       <div className="App">
         <ScrollContainer>
           <ScrollSection pageId={0}>
-            <div className='full-height green-background'>
-              {/*<UsaCannabisComparismPage/>*/}
-              <CannKgPage/>
-            </div>
+            <SingleStatePage/>
+            {/*<CannKgPage/>*/}
           </ScrollSection>
 
           <ScrollSection pageId={1}>
-            <div className='full-height yellow-background'>
-              <UsaCannabisLegalizedPage/>
-            </div>
+            <UsaCannabisLegalizedPage/>
           </ScrollSection>
 
           <ScrollSection pageId={2}>
-            <div className='full-height purple-background'>
+            <div className='full-height'>
               <UsaCannabisInfoPage/>
             </div>
           </ScrollSection>
@@ -54,14 +48,6 @@ class App extends Component {
               <CannabisRiskPage/>
             </div>
           </ScrollSection>
-
-          /*
-          <ScrollSection pageId={6}>
-            <div className='grey-background'>
-              <DrugComparisonPage/>
-            </div>
-          </ScrollSection>
-          */
 
           <ScrollSection pageId={6}>
             <div className='full-height yellow-background'>

@@ -1,0 +1,21 @@
+.left-bar {
+    background-color: #263238;
+    height: 100vh;
+}
+
+.layout-title {
+    margin-top: 50px;
+}
+
+.layout-side-content > * > h1 {
+    color: white;
+}
+
+.layout-side-content {
+    margin-top: 50px;
+    color: white;
+}
+
+.split-layout {
+    height: 100vh;
+}
