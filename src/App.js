@@ -17,8 +17,8 @@ class App extends Component {
       <div className="App">
         <ScrollContainer>
           <ScrollSection pageId={0}>
-            <SingleStatePage/>
-            {/*<CannKgPage/>*/}
+            {/*<SingleStatePage/>*/}
+            <CannKgPage/>
           </ScrollSection>
 
           <ScrollSection pageId={1}>
@@ -38,9 +38,7 @@ class App extends Component {
           </ScrollSection>
 
           <ScrollSection pageId={4}>
-            <div className='full-height red-background'>
-              <SingleStatePage/>
-            </div>
+            <SingleStatePage/>
           </ScrollSection>
 
           <ScrollSection pageId={5}>
