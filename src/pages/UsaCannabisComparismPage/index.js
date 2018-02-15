@@ -8,22 +8,14 @@ import Card from "antd/es/card/index";
 import OneSidedMap from "../../components/TwoSidedMap/OneSidedMap";
 
 import cannabis_info from './cannabis_info';
-import { notification } from "antd/lib/index";
+import TwoSidedMap from "../../components/TwoSidedMap";
 
-export default class UsaCannabisInfoPage extends Component {
+export default class UsaCannabisComparismPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {};
   }
-
-  showData = (state, data) => {
-    notification.destroy();
-    notification.info({
-      message: state,
-      description: data[state]
-    });
-  };
 
   render() {
     return (
@@ -31,7 +23,7 @@ export default class UsaCannabisInfoPage extends Component {
         <Row type='flex' gutter={16}>
           <Col span={20} offset={2}>
             <Card className='max-height' title="Percentage of Cannabis User 2015" align='justify'>
-              <OneSidedMap data={cannabis_info.data.by_state} onHover={this.showData}/>
+              <TwoSidedMap data={cannabis_info.data.by_state}/>
             </Card>
           </Col>
           <Col span={2}/>

@@ -33,6 +33,8 @@ export default class TwoSidedMap extends Component {
   };
 
   render() {
+    const clipPos = `${this.state.childWidth / (100 / this.state.clipPosition)}px`;
+
     return (
       <div className='two-sided-map-container'>
         <div className='two-sided-map-slider' style={{
@@ -45,11 +47,11 @@ export default class TwoSidedMap extends Component {
         <OneSidedMap onDimenChange={this.onChangeDimension}
                      onHover={this.showData}
                      data={this.props.data} colors={['#FFFF00', '#FF0000']} startClip={'0px'}
-                     endClip={`${this.state.clipPosition / 2 - 0.1}vw`}/>
+                     endClip={clipPos}/>
         <OneSidedMap onHover={this.showData}
                      data={this.props.data} colors={['#00FFFF', '#0000FF']}
-                     startClip={`${this.state.clipPosition / 2 + 0.1}vw`}
-                     endClip={'100vw'}/>
+                     startClip={clipPos}
+                     endClip={`${this.state.childWidth}px`}/>
       </div>
     );
   }
