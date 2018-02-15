@@ -8,6 +8,7 @@ import PoliticalViewPage from "./pages/PoliticalViewPage";
 import { ScrollContainer, ScrollSection } from "./components/OnePageScroll";
 import UsaCannabisLegalizedPage from "./pages/UsaCannabisLegalizedPage";
 import UsaCannabisComparismPage from "./pages/UsaCannabisComparismPage";
+import ConsumptionChartsPage from "./pages/ConsumptionChartsPage";
 import SingleStatePage from "./pages/UsaSingleStatePage";
 
 
@@ -27,19 +28,19 @@ class App extends Component {
           </ScrollSection>
 
           <ScrollSection pageId={2}>
-            <UsaCannabisInfoPage/>
+            <ConsumptionChartsPage/>
           </ScrollSection>
 
           <ScrollSection pageId={3}>
-            <UsaCannabisComparismPage/>
+            <UsaCannabisInfoPage/>
           </ScrollSection>
 
           <ScrollSection pageId={4}>
-            <SingleStatePage/>
+            <UsaCannabisComparismPage/>
           </ScrollSection>
 
           <ScrollSection pageId={5}>
-            <CannabisRiskPage/>
+            <SingleStatePage/>
           </ScrollSection>
 
           <ScrollSection pageId={6}>

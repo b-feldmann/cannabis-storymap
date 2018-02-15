@@ -41,7 +41,7 @@ export default class CannKgPage extends Component {
         'background-image': 'url(https://upload.wikimedia.org/wikipedia/commons/0/0e/Cannabis_plants_in_front_of_the_Dhaulagiri_summit.jpg)',
         'background-size':'cover'
       }}>
-        <SplitLayout title='Legalization of Cannabis' main={main} side={side}/>
+        <SplitLayout title='Effects of the Legalization of Cannabis' main={main} side={side}/>
       </div>
     );
   }
