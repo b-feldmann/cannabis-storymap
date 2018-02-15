@@ -1,0 +1,257 @@
+[
+  {
+    "state": "Alabama",
+    "medical": "not",
+    "recreational": "not"
+  },
+  {
+    "state": "Alaska",
+    "medical": "2015-02-24",
+    "recreational": "2015-02-24"
+  },
+  {
+    "state": "Arizona",
+    "medical": "2010-11-02",
+    "recreational": "not"
+  },
+  {
+    "state": "Arkansas",
+    "medical": "2016-11-08",
+    "recreational": "not"
+  },
+  {
+    "state": "California",
+    "medical": "1996-11-05",
+    "recreational": "2018-01-01"
+  },
+  {
+    "state": "Colorado",
+    "medical": "2000-11-07",
+    "recreational": "2012-11-06"
+  },
+  {
+    "state": "Connecticut",
+    "medical": "2012-06-01",
+    "recreational": "not"
+  },
+  {
+    "state": "Delaware",
+    "medical": "2011-05-13",
+    "recreational": "not"
+  },
+  {
+    "state": "Florida",
+    "medical": "2016-11-08",
+    "recreational": "not"
+  },
+  {
+    "state": "Georgia",
+    "medical": "2015-04-16",
+    "recreational": "not"
+  },
+  {
+    "state": "Hawaii",
+    "medical": "2000-06-15",
+    "recreational": "not"
+  },
+  {
+    "state": "Idaho",
+    "medical": "not",
+    "recreational": "not"
+  },
+  {
+    "state": "Illinois",
+    "medical": "not",
+    "recreational": "not"
+  },
+  {
+    "state": "Indiana",
+    "medical": "2017-07-01",
+    "recreational": "not"
+  },
+  {
+    "state": "Iowa",
+    "medical": "2014-05-01",
+    "recreational": "not"
+  },
+  {
+    "state": "Kansas",
+    "medical": "not",
+    "recreational": "not"
+  },
+  {
+    "state": "Kentucky",
+    "medical": "not",
+    "recreational": "not"
+  },
+  {
+    "state": "Louisiana",
+    "medical": "2015-06-30",
+    "recreational": "not"
+  },
+  {
+    "state": "Maine",
+    "medical": "1999-11-02",
+    "recreational": "2016-11-08"
+  },
+  {
+    "state": "Maryland",
+    "medical": "2014-10-01",
+    "recreational": "not"
+  },
+  {
+    "state": "Massachusetts",
+    "medical": "2013-01-01",
+    "recreational": "2016-12-30"
+  },
+  {
+    "state": "Michigan",
+    "medical": "2008-11-01",
+    "recreational": "not"
+  },
+  {
+    "state": "Minnesota",
+    "medical": "2015-06-01",
+    "recreational": "not"
+  },
+  {
+    "state": "Mississippi",
+    "medical": "2014-07-01",
+    "recreational": "not"
+  },
+  {
+    "state": "Missouri",
+    "medical": "2014-07-01",
+    "recreational": "not"
+  },
+  {
+    "state": "Montana",
+    "medical": "2004-11-02",
+    "recreational": "not"
+  },
+  {
+    "state": "Nebraska",
+    "medical": "not",
+    "recreational": "not"
+  },
+  {
+    "state": "Nevada",
+    "medical": "2000-11-07",
+    "recreational": "2016-11-08"
+  },
+  {
+    "state": "New Hampshire",
+    "medical": "2013-07-23",
+    "recreational": "not"
+  },
+  {
+    "state": "New Jersey",
+    "medical": "2010-01-18",
+    "recreational": "not"
+  },
+  {
+    "state": "New Mexico",
+    "medical": "2007-04-01",
+    "recreational": "not"
+  },
+  {
+    "state": "New York",
+    "medical": "2014-07-14",
+    "recreational": "not"
+  },
+  {
+    "state": "North Carolina",
+    "medical": "2015-07-17",
+    "recreational": "not"
+  },
+  {
+    "state": "North Dakota",
+    "medical": "2016-11-08",
+    "recreational": "not"
+  },
+  {
+    "state": "Ohio",
+    "medical": "2016-06-08",
+    "recreational": "not"
+  },
+  {
+    "state": "Oklahoma",
+    "medical": "not",
+    "recreational": "not"
+  },
+  {
+    "state": "Oregon",
+    "medical": "1999-01-01",
+    "recreational": "2015-07-01"
+  },
+  {
+    "state": "Pennsylvania",
+    "medical": "2016-04-17",
+    "recreational": "not"
+  },
+  {
+    "state": "Rhode Island",
+    "medical": "2006-01-01",
+    "recreational": "not"
+  },
+  {
+    "state": "South Carolina",
+    "medical": "2014-06-02",
+    "recreational": "not"
+  },
+  {
+    "state": "South Dakota",
+    "medical": "not",
+    "recreational": "not"
+  },
+  {
+    "state": "Tennessee",
+    "medical": "2015-05-04",
+    "recreational": "not"
+  },
+  {
+    "state": "Texas",
+    "medical": "2015-06-01",
+    "recreational": "not"
+  },
+  {
+    "state": "Utah",
+    "medical": "not",
+    "recreational": "not"
+  },
+  {
+    "state": "Vermont",
+    "medical": "2004-05-19",
+    "recreational": "2018-01-04"
+  },
+  {
+    "state": "Virginia",
+    "medical": "not",
+    "recreational": "not"
+  },
+  {
+    "state": "Washington",
+    "medical": "2012-11-06",
+    "recreational": "2012-11-06"
+  },
+  {
+    "state": "West Virginia",
+    "medical": "2017-04-19",
+    "recreational": "not"
+  },
+  {
+    "state": "Wisconsin",
+    "medical": "2014-04-01",
+    "recreational": "not"
+  },
+  {
+    "state": "Wyoming",
+    "medical": "2015-07-01",
+    "recreational": "not"
+  },
+  {
+    "state": "District of Columbia",
+    "medical": "2011-01-01",
+    "recreational": "2015-02-26"
+  }
+]

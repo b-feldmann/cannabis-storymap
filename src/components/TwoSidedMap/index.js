@@ -44,12 +44,14 @@ export default class TwoSidedMap extends Component {
         }}>
           <Slider min={0} max={100} value={this.state.clipPosition} onChange={this.onChange}/>
         </div>
-        <OneSidedMap onDimenChange={this.onChangeDimension}
+        <OneSidedMap dataMul={4}
+          onDimenChange={this.onChangeDimension}
                      onHover={this.showData}
-                     data={this.props.data} colors={['#FFFF00', '#FF0000']} startClip={'0px'}
+                     data={this.props.leftData} colors={['#FFFF00', '#FF0000']} startClip={'0px'}
                      endClip={clipPos}/>
-        <OneSidedMap onHover={this.showData}
-                     data={this.props.data} colors={['#00FFFF', '#0000FF']}
+        <OneSidedMap dataMul={1000}
+          onHover={this.showData}
+                     data={this.props.rightData} colors={['#00FFFF', '#0000FF']}
                      startClip={clipPos}
                      endClip={`${this.state.childWidth}px`}/>
       </div>

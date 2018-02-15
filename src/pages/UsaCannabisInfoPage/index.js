@@ -31,7 +31,8 @@ export default class UsaCannabisInfoPage extends Component {
         <Row type='flex' gutter={16}>
           <Col span={20} offset={2}>
             <Card className='max-height' title="Percentage of Cannabis User 2015" align='justify'>
-              <OneSidedMap data={cannabis_info.data.by_state} onHover={this.showData}/>
+              <OneSidedMap
+                colors={['#FFFF00', '#FF0000']} dataMul={4} data={cannabis_info.data.by_state} onHover={this.showData}/>
             </Card>
           </Col>
           <Col span={2}/>
