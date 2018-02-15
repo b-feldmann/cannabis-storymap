@@ -63,16 +63,15 @@ class OneSidedMap extends Component {
       }
     }
 
-    if(this.props.min) min = this.props.min;
-    if(this.props.max) max = this.props.max;
+    if (this.props.min) min = this.props.min;
+    if (this.props.max) max = this.props.max;
 
     if (this.props.startClip && this.props.endClip) {
       return (
         <div style={{
           position: 'absolute',
-          left: '50%',
-          transform: 'translate(-50%, 0)',
-          clip: `rect(0,${this.props.endClip},100vh,${this.props.startClip})`
+          clip: `rect(0,${this.props.endClip},100vh,${this.props.startClip})`,
+          width: '100%'
         }}>
           <USAMap customize={this.statesCustomConfig(min, max)} onHover={this.mapHandler}/>
         </div>
@@ -80,10 +79,10 @@ class OneSidedMap extends Component {
     }
 
     return (
-      <div>
-        <USAMap style={{ width: '100%' }}
-                customize={this.statesCustomConfig(min, max)}
-                onHover={this.mapHandler}/>
+      <div style={{ position: 'absolute', width: '100%' }}>
+        <USAMap
+          customize={this.statesCustomConfig(min, max)}
+          onHover={this.mapHandler}/>
       </div>
     );
   }

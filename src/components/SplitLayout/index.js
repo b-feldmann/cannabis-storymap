@@ -4,10 +4,6 @@ import Row from "antd/es/grid/row";
 import { Col } from "antd/lib/grid/index";
 
 export default class SplitLayout extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     let hasSide = false;
     if (this.props.side) hasSide = true;

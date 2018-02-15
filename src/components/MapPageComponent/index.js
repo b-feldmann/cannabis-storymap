@@ -4,6 +4,7 @@ import './styles.css'
 import Row from "antd/es/grid/row";
 import Col from "antd/es/grid/col";
 
+import OneSidedMap from "../../components/TwoSidedMap/OneSidedMap";
 import TwoSidedMap from "../../components/TwoSidedMap";
 import Slider from "antd/es/slider/index";
 import cannabis_2009 from './cannabis/mj_2009';
@@ -24,6 +25,7 @@ import incidents_2015 from './traffic/incidents_2015';
 
 import { Select } from 'antd';
 import SplitLayout from "../../components/SplitLayout";
+import { notification } from "antd/lib/index";
 
 const Option = Select.Option;
 
@@ -57,6 +59,14 @@ export default class MapPageComponent extends Component {
     });
 
     return [min, max];
+  };
+
+  showData = (state, data) => {
+    notification.destroy();
+    notification.info({
+      message: state,
+      description: data[state]
+    });
   };
 
   render() {
@@ -111,7 +121,7 @@ export default class MapPageComponent extends Component {
     const leftRange = this.getRange([cannabis_2009, cannabis_2010, cannabis_2011, cannabis_2012, cannabis_2013, cannabis_2014, cannabis_2015]);
     const rightRange = this.getRange([incidents_2009, incidents_2010, incidents_2011, incidents_2012, incidents_2013, incidents_2014, incidents_2015]);
 
-    const main = (
+    const main2 = (
       <div>
         <Row type='flex' gutter={16}>
           <Col span={12}>
@@ -143,16 +153,34 @@ export default class MapPageComponent extends Component {
                     defaultValue={2009}/>
           </Col>
         </Row>
-      </div>
-    );
+      </div>);
 
-    const side = (
-      <div>
-        <h1>my fancy headline</h1>
-        fds
-        sdg
-        sh
-        hf
+    let map;
+    if (this.props.secondData) {
+      map = (
+        <div>
+          <TwoSidedMap leftData={cannabis} leftRange={leftRange} rightData={incidents} rightRange={rightRange}
+                       showData={this.showData}/>
+        </div>
+      );
+    } else {
+      map = (
+        <OneSidedMap
+          min={leftRange[0]} max={leftRange[1]}
+          onHover={this.showData}
+          data={cannabis} colors={['#FFFF00', '#FF0000']}/>
+      );
+    }
+
+    const main = (
+      <div className='full-height'>
+        <div className='map-year-slider'>
+          <Slider
+            value={this.state.year}
+            onChange={this.onChange} marks={marks} step={null} min={2009} max={2015}
+            defaultValue={2009}/>
+        </div>
+        {map}
       </div>
     );
 

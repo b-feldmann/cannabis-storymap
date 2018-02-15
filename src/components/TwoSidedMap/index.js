@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './styles.css';
 import OneSidedMap from "./OneSidedMap";
-import { Slider, notification } from 'antd';
+import { Slider } from 'antd';
 
 export default class TwoSidedMap extends Component {
   constructor(props) {
@@ -22,14 +22,6 @@ export default class TwoSidedMap extends Component {
 
   onChangeDimension = (dimen) => {
     this.setState({ childWidth: dimen.width, childHeight: dimen.height });
-  };
-
-  showData = (state, data) => {
-    notification.destroy();
-    notification.info({
-      message: state,
-      description: data[state]
-    });
   };
 
   getRange = (data) => {
@@ -56,7 +48,7 @@ export default class TwoSidedMap extends Component {
     if(this.props.leftRange) leftRange = this.props.leftRange;
     if(this.props.rightRange) rightRange = this.props.rightRange;
 
-    return (
+    const maps = (
       <div className='two-sided-map-container'>
         <div className='two-sided-map-slider' style={{
           zIndex: 999,
@@ -68,15 +60,26 @@ export default class TwoSidedMap extends Component {
         <OneSidedMap
           min={leftRange[0]} max={leftRange[1]}
           onDimenChange={this.onChangeDimension}
-                     onHover={this.showData}
-                     data={this.props.leftData} colors={['#FFFF00', '#FF0000']} startClip={'0px'}
-                     endClip={clipPos}/>
+          onHover={this.props.showData}
+          data={this.props.leftData} colors={['#FFFF00', '#FF0000']} startClip={'0px'}
+          endClip={clipPos}/>
         <OneSidedMap
           min={rightRange[0]} max={rightRange[1]}
+          onHover={this.props.showData}
+          data={this.props.rightData} colors={['#00FFFF', '#0000FF']}
+          startClip={clipPos}
+          endClip={`${this.state.childWidth}px`}/>
+      </div>
+    );
+
+    return (
+      <div>
+        <OneSidedMap
+          min={leftRange[0]} max={leftRange[1]}
+          onDimenChange={this.onChangeDimension}
           onHover={this.showData}
-                     data={this.props.rightData} colors={['#00FFFF', '#0000FF']}
-                     startClip={clipPos}
-                     endClip={`${this.state.childWidth}px`}/>
+          data={this.props.leftData} colors={['#FFFF00', '#FF0000']} startClip={'0px'}
+          endClip={clipPos}/>
       </div>
     );
   }

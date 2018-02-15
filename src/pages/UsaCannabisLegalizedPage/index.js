@@ -37,23 +37,25 @@ export default class UsaCannabisLegalizedPage extends Component {
 
   render() {
     const main = (
-      <div>
-        <Row type='flex' gutter={16}>
-          <Col span={20} offset={2}>
-            <Card title="Legalization of Cannabis for Recreational Use" align='justify'>
-              In the US, the Legalization of cannabis started in 2012 in Colorado and Washington. Hence we want to focus on these two states.
-              <br/>
-              Nevertheless, there are more states where cannabis is legal now. Most recent legalizations for recreational use took place in Vermont and California.
-              <br/><br/>
-              <Timeline options={options} items={this.state.recreational} />
-            </Card>
-          </Col>
-        </Row>
+      <div className='center-container'>
+        <div style={{width: '100%'}}>
+          <h1 style={{ color: '#000', 'padding-bottom': '120px' }}>Legalization of Cannabis for Recreational Use</h1>
+          <div align='justify'>
+            In the US, the Legalization of cannabis started in 2012 in Colorado and Washington. Hence we want to focus
+            on
+            these two states.
+            <br/>
+            Nevertheless, there are more states where cannabis is legal now. Most recent legalizations for recreational
+            use took place in Vermont and California.
+            <br/><br/>
+            <Timeline options={options} items={this.state.recreational}/>
+          </div>
+        </div>
       </div>
     );
 
     return (
-      <SplitLayout title='Legalization of Cannabis in the USA' main={main}/>
+      <SplitLayout title='' main={main}/>
     );
   }
 }
