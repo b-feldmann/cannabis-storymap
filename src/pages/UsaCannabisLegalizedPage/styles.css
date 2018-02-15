@@ -4,3 +4,10 @@
     align-items: center;
     justify-content: center;
 }
+
+.center-container-full {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
