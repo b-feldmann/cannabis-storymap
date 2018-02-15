@@ -17,7 +17,7 @@ class App extends Component {
       <div className="App">
         <ScrollContainer>
           <ScrollSection pageId={0}>
-            {/*<SingleStatePage/>*/}
+            {/*<UsaCannabisComparismPage/>*/}
             <CannKgPage/>
           </ScrollSection>
 
@@ -26,15 +26,11 @@ class App extends Component {
           </ScrollSection>
 
           <ScrollSection pageId={2}>
-            <div className='full-height'>
-              <UsaCannabisInfoPage/>
-            </div>
+            <UsaCannabisInfoPage/>
           </ScrollSection>
 
           <ScrollSection pageId={3}>
-            <div className='full-height purple-background'>
-              <UsaCannabisComparismPage/>
-            </div>
+            <UsaCannabisComparismPage/>
           </ScrollSection>
 
           <ScrollSection pageId={4}>
@@ -42,15 +38,11 @@ class App extends Component {
           </ScrollSection>
 
           <ScrollSection pageId={5}>
-            <div className='full-height red-background'>
-              <CannabisRiskPage/>
-            </div>
+            <CannabisRiskPage/>
           </ScrollSection>
 
           <ScrollSection pageId={6}>
-            <div className='full-height yellow-background'>
-              <PoliticalViewPage/>
-            </div>
+            <PoliticalViewPage/>
           </ScrollSection>
         </ScrollContainer>
       </div>

@@ -9,6 +9,7 @@ import OneSidedMap from "../../components/TwoSidedMap/OneSidedMap";
 
 import cannabis_info from './cannabis_info';
 import { notification } from "antd/lib/index";
+import SplitLayout from "../../components/SplitLayout";
 
 export default class UsaCannabisInfoPage extends Component {
   constructor(props) {
@@ -26,18 +27,24 @@ export default class UsaCannabisInfoPage extends Component {
   };
 
   render() {
-    return (
+    const main = (
       <div>
-        <Row type='flex' gutter={16}>
-          <Col span={20} offset={2}>
-            <Card className='max-height' title="Percentage of Cannabis User 2015" align='justify'>
-              <OneSidedMap
-                colors={['#FFFF00', '#FF0000']} dataMul={4} data={cannabis_info.data.by_state} onHover={this.showData}/>
-            </Card>
-          </Col>
-          <Col span={2}/>
-        </Row>
+        <OneSidedMap
+          colors={['#FFFF00', '#FF0000']} data={cannabis_info.data.by_state} onHover={this.showData}/>
       </div>
+    );
+
+    const side = (
+      <div>
+        <h1>my headline</h1>
+        hddf
+        dgisdgs
+        gshfgs
+      </div>
+    );
+
+    return (
+      <SplitLayout title='Percentage of Cannabis User over the years' main={main} side={side}/>
     );
   }
 }

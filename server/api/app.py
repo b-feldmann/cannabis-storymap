@@ -12,7 +12,9 @@ TARGET_MAPPING = {
     'MJ': ('NSDUH_STATES', 'MRJYR'),
     'COC': ('NSDUH_STATES', 'COCYR'),
     'TRAFFIC': ('TRAFFIC_NORMALIZED', 'INCIDENTS_NORM'),
-    'LEGAL': ('LEGAL_STATUS_CURRENT', 'POSSESSIONRECREATIONAL')
+    'LEGAL': ('LEGAL_STATUS_CURRENT', 'POSSESSIONRECREATIONAL'),
+    'MENTAL': ('NSDUH_STATES', 'AMIYR'),
+    'CRIME': ('CRIME_CLEAN', 'VIOLENT_CRIME_PER_PERSON')
 }
 
 
@@ -97,10 +99,12 @@ def get_mapdata(year, target):
 
 def outcome_years_for_state(state, target, agegrp):
     schema, outcome = TARGET_MAPPING[target]
-    if schema == 'TRAFFIC_NORMALIZED':
+    if schema == 'TRAFFIC_NORMALIZED' or schema == 'CRIME_CLEAN':
         query = '''SELECT "State", {} as "Value", YEAR as "Year"
                    FROM "TUKGRP1".{}
-                   WHERE "State" = \'{}\''''.format(outcome, schema, state)
+                   WHERE UPPER("State") = UPPER(\'{}\')'''.format(outcome,
+                                                                  schema,
+                                                                  state)
     else:
         query = '''
             SELECT s."_state" as "State", s."bsae" as "Value",
@@ -121,7 +125,7 @@ def outcome_years_for_state(state, target, agegrp):
 
 def outcome_states_for_year(year, target, agegrp):
     schema, outcome = TARGET_MAPPING[target]
-    if schema == 'TRAFFIC_NORMALIZED':
+    if schema == 'TRAFFIC_NORMALIZED' or schema == 'CRIME_CLEAN':
         query = '''SELECT "State", {} as "Value", YEAR as "Year"
                    FROM "TUKGRP1".{}
                    WHERE "YEAR" = {}'''.format(outcome, schema, year)
@@ -163,7 +167,7 @@ def avg_by_legal_status_timeseries(target, legal_status, agegrp):
               AVG({1}) as "Value"
             FROM {2} s
             JOIN LEGAL_STATUS_CURRENT ls
-              ON s."State" = ls.STATE
+              ON UPPER(s."State") = UPPER(ls.STATE)
             GROUP BY ls."{0}", s.YEAR
             ORDER BY s.YEAR ASC,
             ls."{0}" ASC

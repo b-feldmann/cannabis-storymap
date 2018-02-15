@@ -71,8 +71,7 @@ class OneSidedMap extends Component {
         <div style={{
           position: 'absolute',
           left: '50%',
-          top: '50%',
-          transform: 'translate(-50%, -50%)',
+          transform: 'translate(-50%, 0)',
           clip: `rect(0,${this.props.endClip},100vh,${this.props.startClip})`
         }}>
           <USAMap style={{ width: '100%' }}
