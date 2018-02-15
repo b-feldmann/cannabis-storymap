@@ -9,10 +9,13 @@ export default class SplitLayout extends Component {
   }
 
   render() {
+    let hasSide = false;
+    if (this.props.side) hasSide = true;
+
     return (
       <div className='split-layout'>
         <Row>
-          <Col span={17}>
+          <Col span={hasSide ? 17 : 24}>
             <Row><h1 className='layout-title'>{this.props.title}</h1></Row>
             <Row>
               <Col span={20} offset={2}>
@@ -20,12 +23,12 @@ export default class SplitLayout extends Component {
               </Col>
             </Row>
           </Col>
-          <Col span={6} className='left-bar'>
+          <Col span={hasSide ? 6 : 0} className='left-bar'>
             <div className='layout-side-content'>
               {this.props.side}
             </div>
           </Col>
-          <Col span={1}></Col>
+          <Col span={hasSide ? 1 : 0}></Col>
         </Row>
       </div>
     );
