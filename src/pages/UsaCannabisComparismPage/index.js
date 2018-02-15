@@ -11,11 +11,12 @@ export default class UsaCannabisComparismPage extends Component {
   render() {
     const side = (
       <div>
-        <h1>Does Legalization Imply Usage?</h1>
+        <h1>Does consumption have state-wide effects?</h1>
         You can see on the map that the number of cannabis users is higher in Colorado, Washington, Alaska, Maine, and
-        Vermont. This may be because cannabis is legal there, but remember that for example Vermont legalized cannabis
-        only in 2018. Maybe it is the other way around and cannabis is legal there <b>because</b> the consumption is
-        high - to avoid criminalizing a large share of the population.
+        Vermont. Does this imply more traffic incidents in these states? Have the people with higher cannabis usage more
+        mental health problems? Or is cannabis a starter drug and more people consume other drugs with cannabis?
+        <br/>
+        This map show the cannabis usage of the population of the usa and compares it with other conditions.
       </div>
     );
 
