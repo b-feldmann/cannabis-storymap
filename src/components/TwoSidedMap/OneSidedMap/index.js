@@ -28,9 +28,9 @@ class OneSidedMap extends Component {
       if (stateKeys.hasOwnProperty(index)) {
         const code = resolveState(stateKeys[index]);
         if (this.props.colors) {
-          config[code] = { fill: this.interpolate(this.props.colors[0], this.props.colors[1], this.props.data[stateKeys[index]] * 2) };
+          config[code] = { fill: this.interpolate(this.props.colors[0], this.props.colors[1], this.props.data[stateKeys[index]] * this.props.dataMul) };
         } else
-          config[code] = { fill: this.interpolate('#FFFFFF', '#000000', this.props.data[stateKeys[index]] * 2) };
+          config[code] = { fill: this.interpolate('#FFFFFF', '#000000', this.props.data[stateKeys[index]] * this.props.dataMul) };
       }
     }
 
