@@ -20,7 +20,7 @@ export default class UsaCannabisComparismPage extends Component {
     );
 
     return (
-      <MapPageComponent title='Cannabis in Comparism' side={side}/>
+      <MapPageComponent title='Cannabis in Comparism' side={side} double={true}/>
     );
   }
 }

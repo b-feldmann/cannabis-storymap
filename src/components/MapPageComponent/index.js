@@ -33,8 +33,24 @@ export default class MapPageComponent extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { year: 2009 };
+    this.state = {
+      year: 2009,
+      clipPosition: 50,
+      childWidth: 100,
+      childHeight: 100,
+    };
   }
+
+  onChangeClipSlider = (value) => {
+    this.setState({
+      clipPosition: value,
+    });
+  };
+
+  onChangeDimension = (dimen) => {
+    console.log(dimen);
+    this.setState({ childWidth: dimen.width, childHeight: dimen.height });
+  };
 
   onChange = (value) => {
     this.setState({
@@ -155,12 +171,31 @@ export default class MapPageComponent extends Component {
         </Row>
       </div>);
 
+    const clipPos = `${this.state.childWidth / (100 / this.state.clipPosition)}px`;
+
     let map;
-    if (this.props.secondData) {
+    if (this.props.double) {
       map = (
         <div>
-          <TwoSidedMap leftData={cannabis} leftRange={leftRange} rightData={incidents} rightRange={rightRange}
-                       showData={this.showData}/>
+          <div className='two-sided-map-slider' style={{
+            zIndex: 999,
+            width: `${this.state.childWidth}px`,
+            'margin-top': `${this.state.childHeight / 2}px`
+          }}>
+            <Slider min={0} max={100} value={this.state.clipPosition} onChange={this.onChangeClipSlider}/>
+          </div>
+          <OneSidedMap
+            min={leftRange[0]} max={leftRange[1]}
+            onChangeDimension={this.onChangeDimension}
+            onHover={this.showData}
+            data={cannabis} colors={['#FFFF00', '#FF0000']} startClip={'0px'}
+            endClip={clipPos}/>
+          <OneSidedMap
+            min={rightRange[0]} max={rightRange[1]}
+            onChangeDimension={this.onChangeDimension}
+            onHover={this.showData}
+            data={incidents} colors={['#00FFFF', '#0000FF']} startClip={clipPos}
+            endClip={`${this.state.childWidth}px`}/>
         </div>
       );
     } else {

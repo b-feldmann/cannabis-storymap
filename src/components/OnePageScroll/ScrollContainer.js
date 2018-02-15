@@ -75,15 +75,12 @@ class ScrollContainer extends Component {
     if (this.state.touchControl === true) {
       return
     }
-    console.log('touch move')
     let direction = e.touches[0].screenY < this.state.touchStart ? 'down' : 'up'
 
     if (this.atHead() && direction === 'up') {
-      console.log('lala');
       return
     }
     if (this.atEnd() && direction === 'down') {
-      console.log('haha');
       return
     }
 

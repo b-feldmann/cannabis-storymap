@@ -10,6 +10,8 @@ import USAMap from "../../USAMap";
 class OneSidedMap extends Component {
   constructor(props) {
     super(props);
+
+    if (this.props.onChangeDimension) this.props.onChangeDimension(props.size);
   }
 
   mapHandler = (event) => {
@@ -45,8 +47,8 @@ class OneSidedMap extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.size.width !== this.props.size.width) {
-      if (this.props.onDimenChange) this.props.onDimenChange(nextProps.size);
+    if (nextProps.size.width !== this.props.size.width || nextProps.size.height !== this.props.size.height) {
+      if (this.props.onChangeDimension) this.props.onChangeDimension(nextProps.size);
     }
   }
 
