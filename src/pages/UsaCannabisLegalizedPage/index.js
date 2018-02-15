@@ -41,6 +41,10 @@ export default class UsaCannabisLegalizedPage extends Component {
         <Row type='flex' gutter={16}>
           <Col span={20} offset={2}>
             <Card title="Legalization of Cannabis for Recreational Use" align='justify'>
+              In the US, the Legalization of cannabis started in 2012 in Colorado and Washington. Hence we want to focus on these two states.
+              <br/>
+              Nevertheless, there are more states where cannabis is legal now. Most recent legalizations for recreational use took place in Vermont and California.
+              <br/><br/>
               <Timeline options={options} items={this.state.recreational} />
             </Card>
           </Col>
