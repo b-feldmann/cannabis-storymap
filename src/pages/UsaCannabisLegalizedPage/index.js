@@ -10,8 +10,7 @@ import legalization_dates from './legalization_dates';
 import Timeline from 'react-visjs-timeline';
 
 const options = {
-  width: '100%',
-  maxHeight: '300px'
+  width: '100%'
 };
 
 export default class UsaCannabisLegalizedPage extends Component {
@@ -38,14 +37,6 @@ export default class UsaCannabisLegalizedPage extends Component {
   render() {
     return (
       <div>
-        <Row type='flex' gutter={16}>
-          <Col span={20} offset={2}>
-            <Card title="Legalization of Cannabis for Medical Purposes" align='justify'>
-              <Timeline options={options} items={this.state.medical} />
-            </Card>
-          </Col>
-          <Col span={2}/>
-        </Row>
         <Row type='flex' gutter={16}>
           <Col span={20} offset={2}>
             <Card title="Legalization of Cannabis for Recreational Use" align='justify'>

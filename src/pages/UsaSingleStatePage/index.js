@@ -24,7 +24,7 @@ const chartData = [
   { "year": 2013, "value": 0.02857300080358982 },
   { "year": 2014, "value": 0.027382999658584595 },
   { "year": 2015, "value": 0.02934199944138527 }
-];
+].map(obj => ({year: obj.year, value: obj.value*100}));
 
 const averageTimeseriesByStatus = [
   {
@@ -59,30 +59,15 @@ export default class SingleStatePage extends Component {
   render() {
     const main = (<div>
         <Row type='flex' gutter={16}>
-          <Col span={12}>
+          <Col span={12} style={{marginTop: 20}}>
             <h2>Cocaine consumption in Colorado</h2>
-            <LineChart width={500} height={250} data={chartData}
-                       margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+            <LineChart width={800} height={400} data={chartData}
+                       margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
               <XAxis dataKey="year"/>
               <YAxis/>
               <Tooltip/>
               <Legend/>
-              <Line type="monotone" dataKey="value" stroke="#82ca9d"/>
-            </LineChart>
-          </Col>
-
-          <Col span={12}>
-            <h2>Average by legal status</h2>
-            <LineChart width={500} height={250} data={averageTimeseriesByStatus}
-                       margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-              <XAxis dataKey="year"/>
-              <YAxis/>
-              <Tooltip/>
-              <Legend/>
-              <Line type="monotone" dataKey="legal" stroke="#00cb11"/>
-              <Line type="monotone" dataKey="felony" stroke="#cb221d"/>
-              <Line type="monotone" dataKey="decriminalized" stroke="#cbc98a"/>
-              <Line type="monotone" dataKey="misdemeanor" stroke="#f09219"/>
+              <Line type="monotone" dataKey="value" name="Percentage of Population" stroke="#82ca9d"/>
             </LineChart>
           </Col>
         </Row>
@@ -91,12 +76,20 @@ export default class SingleStatePage extends Component {
 
     const side = (
       <div>
-        <h1>I am a awesome side view</h1>
+        <h1>Conclusion</h1>
+        <div  style={{paddingLeft: 15, paddingRight: 15, paddingTop: 80}}>
+        We only found weak correlations between use of cannabis and use of other drugs, traffic incidents, mental health, and crime rates.<br/>
+        In fact, Colorado, despite having one of the highest cannabis consumptions in the US, has a comparably low rate of traffic incidents.
+        <br/><br/>
+        The chart on the left shows, that the legalization of cannabis in 2012 in Colorado has had no significant effect on cocain consumption.
+        <br/><br/>
+        More information can be found in the <a href="https://www.drogenbeauftragte.de/presse/pressekontakt-und-mitteilungen/2017/2017-4-quartal/aktuelle-studie-des-klinikums-der-universitaet-muenchen-cannabis-potential-und-risiken-eine-wissenschaftliche-analyse-capris.html">CaPRis study</a>.
+        </div>
       </div>
     );
 
     return (
-      <SplitLayout title='Legalization of Cannabis in Germany' main={main} side={side}/>
+      <SplitLayout title='Effects of the Legalization of Cannabis' main={main} side={side}/>
     );
   }
 }
