@@ -41,7 +41,7 @@ export default class CannKgPage extends Component {
 
     return (
       <div>
-        <SplitLayout title='Legalization of Cannabis' main={main} side={side}/>
+        <SplitLayout title='Effects of Cannabis Legalization' main={main} side={side}/>
       </div>
     );
   }
