@@ -56,9 +56,6 @@ export default class TwoSidedMap extends Component {
     if(this.props.leftRange) leftRange = this.props.leftRange;
     if(this.props.rightRange) rightRange = this.props.rightRange;
 
-    console.log('leftRange: ', leftRange);
-    console.log('rightRange: ', rightRange);
-
     return (
       <div className='two-sided-map-container'>
         <div className='two-sided-map-slider' style={{
