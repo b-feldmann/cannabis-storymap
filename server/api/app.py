@@ -11,7 +11,8 @@ HOST = ''
 TARGET_MAPPING = {
     'MJ': ('NSDUH_STATES', 'MRJYR'),
     'COC': ('NSDUH_STATES', 'COCYR'),
-    'TRAFFIC': ('TRAFFIC_NORMALIZED', 'INCIDENTS_NORM')
+    'TRAFFIC': ('TRAFFIC_NORMALIZED', 'INCIDENTS_NORM'),
+    'LEGAL': ('LEGAL_STATUS_CURRENT', 'POSSESSIONRECREATIONAL')
 }
 
 
@@ -124,6 +125,16 @@ def outcome_states_for_year(year, target, agegrp):
         query = '''SELECT "State", {} as "Value", YEAR as "Year"
                    FROM "TUKGRP1".{}
                    WHERE "YEAR" = {}'''.format(outcome, schema, year)
+    elif schema == 'LEGAL_STATUS_CURRENT':
+        query = '''SELECT STATE,
+        (CASE
+        WHEN {0}='felony' THEN 0
+        WHEN {0}='midemeanor' THEN 1
+        WHEN {0}='decriminalized' THEN 2
+        ELSE 3
+        END)
+        FROM "TUKGRP1"."{1}"
+        '''.format(outcome, schema)
     else:
         query = '''
             SELECT s."_state" as "State", s."bsae" as "Value",
