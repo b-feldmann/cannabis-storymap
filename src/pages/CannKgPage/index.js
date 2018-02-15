@@ -35,12 +35,14 @@ export default class CannKgPage extends Component {
     );
 
     const main = (
-        <img style={{width: "100%"}} src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Cannabis_plants_in_front_of_the_Dhaulagiri_summit.jpg"/>
-      
+      <div></div>
     );
 
     return (
-      <div>
+      <div style={{
+        'background-image': 'url(https://upload.wikimedia.org/wikipedia/commons/0/0e/Cannabis_plants_in_front_of_the_Dhaulagiri_summit.jpg)',
+        'background-size':'cover'
+      }}>
         <SplitLayout title='Legalization of Cannabis' main={main} side={side}/>
       </div>
     );
