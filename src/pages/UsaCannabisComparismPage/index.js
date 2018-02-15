@@ -26,6 +26,7 @@ import incidents_2014 from './traffic/incidents_2014';
 import incidents_2015 from './traffic/incidents_2015';
 
 import { Select } from 'antd';
+import SplitLayout from "../../components/SplitLayout";
 
 const Option = Select.Option;
 
@@ -113,38 +114,53 @@ export default class UsaCannabisComparismPage extends Component {
     const leftRange = this.getRange([cannabis_2009, cannabis_2010, cannabis_2011, cannabis_2012, cannabis_2013, cannabis_2014, cannabis_2015]);
     const rightRange = this.getRange([incidents_2009, incidents_2010, incidents_2011, incidents_2012, incidents_2013, incidents_2014, incidents_2015]);
 
-    return (
+    const main = (
       <div>
         <Row type='flex' gutter={16}>
-          <Col span={20} offset={2}>
-            <Card className='max-height' title="Cannabis User vs Traffic Incidents" align='justify'>
-              <TwoSidedMap leftData={cannabis} leftRange={leftRange} rightData={incidents} rightRange={rightRange}/>
-              <Row>
-                <Col span={12}>
-                  <Select defaultValue="cannuser">
-                    <Option value="cannuser">Cannabis User</Option>
-                    <Option value="legal_status">Legalization Status</Option>
-                    <Option value="traffic">Traffic Incidents</Option>
-                    <Option value="mental">Mental Health Issues</Option>
-                  </Select>
-                </Col>
-                <Col span={12}>
-                  <Select defaultValue="traffic">
-                    <Option value="cannuser">Cannabis User</Option>
-                    <Option value="legal_status">Legalization Status</Option>
-                    <Option value="traffic">Traffic Incidents</Option>
-                    <Option value="mental">Mental Health Issues</Option>
-                  </Select>
-                </Col>
-              </Row>
-              <Slider style={{ position: 'absolute', bottom: '20px', width: '78vw' }} value={this.state.year}
-                      onChange={this.onChange} marks={marks} step={null} min={2009} max={2015}
-                      defaultValue={2009}/>
-            </Card>
+          <Col span={12}>
+            <Select defaultValue="cannuser">
+              <Option value="cannuser">Cannabis User</Option>
+              <Option value="legal_status">Legalization Status</Option>
+              <Option value="traffic">Traffic Incidents</Option>
+              <Option value="mental">Mental Health Issues</Option>
+            </Select>
           </Col>
-          <Col span={2}/>
+          <Col span={12}>
+            <Select defaultValue="traffic">
+              <Option value="cannuser">Cannabis User</Option>
+              <Option value="legal_status">Legalization Status</Option>
+              <Option value="traffic">Traffic Incidents</Option>
+              <Option value="mental">Mental Health Issues</Option>
+            </Select>
+          </Col>
+        </Row>
+        <Row type='flex' gutter={16}>
+          <Col span={24}>
+            <TwoSidedMap leftData={cannabis} leftRange={leftRange} rightData={incidents} rightRange={rightRange}/>
+          </Col>
+        </Row>
+        <Row type='flex' gutter={16}>
+          <Col span={24}>
+            <Slider value={this.state.year}
+                    onChange={this.onChange} marks={marks} step={null} min={2009} max={2015}
+                    defaultValue={2009}/>
+          </Col>
         </Row>
       </div>
+    );
+
+    const side = (
+      <div>
+        <h1>my fancy headline</h1>
+        fds
+        sdg
+        sh
+        hf
+      </div>
+    );
+
+    return (
+      <SplitLayout title='Cannabis in Comparism' main={main} side={side}/>
     );
   }
 }
