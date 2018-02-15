@@ -46,9 +46,22 @@ export default class ConsumptionChartsPage extends Component {
     return(
       <div>
         <Row type='flex' gutter={16}>
-            <Col span={10} offset={2}>
-                <Card title="2016 consumption by legal status" align='justify'>
-                  <BarChart width={600} height={300} data={legalData}
+            <Col span={10}  offset={2} style={{marginTop: 20}}>
+                <h2>Top 20 states by recreational marijuana use in 2016</h2>
+                  <BarChart width={500} height={600} data={rankingData.slice(0,20)} layout="vertical"
+                        margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                   <XAxis type="number" />
+                   <YAxis dataKey="state" type="category" />
+                   <Tooltip/>
+                   <Legend />
+                   <Bar dataKey="pct" fill="#8884d8" name="Marijuana Use in the Past Year (Population percentage)">
+                       <LabelList dataKey="legalStatus" content={renderLegalizationLabel} position="right" />
+                   </Bar>
+                  </BarChart>
+            </Col>
+            <Col span={10} style={{marginTop: 20}}>
+                <h2>2016 consumption by legal status</h2>
+                  <BarChart width={500} height={300} data={legalData}
                         margin={{top: 5, right: 30, left: 20, bottom: 5}}>
                    <XAxis dataKey="legal" />
                    <YAxis/>
@@ -56,29 +69,7 @@ export default class ConsumptionChartsPage extends Component {
                    <Legend />
                    <Bar dataKey="pct" fill="#8884d8" name="Marijuana Use in the Past Year (Population percentage)" />
                   </BarChart>
-                </Card>
             </Col>
-
-            <Col span={10}>
-              <Card title="Top 20 states by marijuana use in 2016" align='justify'>
-                  <ul className="legend-list">
-                      <li><strong>L</strong>: legal</li>
-                      <li><strong>D</strong>: decriminalized</li>
-                      <li><strong>M</strong>: misdemeanor</li>
-                      <li><strong>F</strong>: fellony</li>
-                  </ul>
-              <BarChart width={500} height={600} data={rankingData.slice(0,20)} layout="vertical"
-                    margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-               <XAxis type="number" />
-               <YAxis dataKey="state" type="category" />
-               <Tooltip/>
-               <Legend />
-               <Bar dataKey="pct" fill="#8884d8" name="Marijuana Use in the Past Year (Population percentage)">
-                   <LabelList dataKey="legalStatus" content={renderLegalizationLabel} position="right" />
-               </Bar>
-              </BarChart>
-            </Card>
-          </Col>
         </Row>
       </div>
     );

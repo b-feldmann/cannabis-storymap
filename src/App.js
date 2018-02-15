@@ -27,19 +27,19 @@ class App extends Component {
           </ScrollSection>
 
           <ScrollSection pageId={2}>
-            <UsaCannabisInfoPage/>
+            <ConsumptionChartsPage/>
           </ScrollSection>
 
           <ScrollSection pageId={3}>
-            <UsaCannabisComparismPage/>
+            <UsaCannabisInfoPage/>
           </ScrollSection>
 
           <ScrollSection pageId={4}>
-            <SingleStatePage/>
+            <UsaCannabisComparismPage/>
           </ScrollSection>
 
           <ScrollSection pageId={5}>
-            <ConsumptionChartsPage/>
+            <SingleStatePage/>
           </ScrollSection>
 
           <ScrollSection pageId={6}>
