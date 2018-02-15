@@ -10,6 +10,8 @@ import PoliticalViewPage from "./pages/PoliticalViewPage";
 import { ScrollContainer, ScrollSection } from "./components/OnePageScroll";
 import UsaCannabisLegalizedPage from "./pages/UsaCannabisLegalizedPage";
 import UsaCannabisComparismPage from "./pages/UsaCannabisComparismPage";
+import SingleStatePage from "./pages/UsaSingleStatePage";
+
 
 class App extends Component {
   render() {
@@ -43,16 +45,23 @@ class App extends Component {
 
           <ScrollSection pageId={4}>
             <div className='full-height red-background'>
+              <SingleStatePage/>
+            </div>
+          </ScrollSection>
+
+          <ScrollSection pageId={5}>
+            <div className='full-height red-background'>
               <CannabisRiskPage/>
             </div>
           </ScrollSection>
 
-
-          <ScrollSection pageId={5}>
+          /*
+          <ScrollSection pageId={6}>
             <div className='grey-background'>
               <DrugComparisonPage/>
             </div>
           </ScrollSection>
+          */
 
           <ScrollSection pageId={6}>
             <div className='full-height yellow-background'>
