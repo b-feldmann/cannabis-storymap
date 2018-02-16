@@ -65,7 +65,7 @@ const dict = {
   },
   crime: {
     display: (val) => {
-      return `${Math.round(val * 1000) / 10}%`
+      return `${Math.round(val * 1000) / 10} violent crimes per 100 people`
     },
     2009: crime_2009,
     2010: crime_2010,
@@ -77,7 +77,7 @@ const dict = {
   },
   mental: {
     display: (val) => {
-      return `${Math.round(val * 1000) / 10}%`
+      return `${Math.round(val * 1000) / 10}% of population with mental health issues`
     },
     2009: mental_2009,
     2010: mental_2010,
