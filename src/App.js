@@ -3,13 +3,13 @@ import './App.css';
 
 import CannKgPage from './pages/CannKgPage';
 import UsaCannabisInfoPage from './pages/UsaCannabisInfoPage';
-import CannabisRiskPage from "./pages/CannabisRisksPage";
 import PoliticalViewPage from "./pages/PoliticalViewPage";
 import { ScrollContainer, ScrollSection } from "./components/OnePageScroll";
 import UsaCannabisLegalizedPage from "./pages/UsaCannabisLegalizedPage";
 import UsaCannabisComparismPage from "./pages/UsaCannabisComparismPage";
 import ConsumptionChartsPage from "./pages/ConsumptionChartsPage";
 import SingleStatePage from "./pages/UsaSingleStatePage";
+import CommonBeliefsPage from "./pages/CommonBeliefsPage"
 
 
 class App extends Component {
@@ -36,14 +36,18 @@ class App extends Component {
           </ScrollSection>
 
           <ScrollSection pageId={4}>
-            <UsaCannabisComparismPage/>
+            <CommonBeliefsPage />
           </ScrollSection>
 
           <ScrollSection pageId={5}>
-            <SingleStatePage/>
+            <UsaCannabisComparismPage/>
           </ScrollSection>
 
           <ScrollSection pageId={6}>
+            <SingleStatePage/>
+          </ScrollSection>
+
+          <ScrollSection pageId={7}>
             <PoliticalViewPage/>
           </ScrollSection>
         </ScrollContainer>
