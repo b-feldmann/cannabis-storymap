@@ -46,30 +46,29 @@ export default class MapPageComponent extends Component {
     });
   };
 
-  getRange = (dataList) => {
-    let min, max;
+  showData = (display, state, data) => {
+    function toState(string) {
+      let ret = '';
+      string.split(' ').forEach((str) => {
+        ret += str.charAt(0).toUpperCase() + str.toLowerCase().slice(1) + ' ';
+      });
+      return ret.substr(0, ret.length - 1);
+    }
 
-    dataList.forEach(data => {
-      const keys = Object.keys(data);
-      for (let index in keys) {
-        if (keys.hasOwnProperty(index)) {
-          if (min) min = Math.min(min, data[keys[index]]);
-          else min = data[keys[index]];
-
-          if (max) max = Math.max(max, data[keys[index]]);
-          else max = data[keys[index]];
+    const keys = Object.keys(data);
+    let val = data[state];
+    for(let index in keys){
+      if(keys.hasOwnProperty(index)){
+        if(toState(keys[index]) === state){
+          val = data[keys[index]];
         }
       }
-    });
+    }
 
-    return [min, max];
-  };
-
-  showData = (display, state, data) => {
     notification.destroy();
     notification.info({
       message: state,
-      description: display(data[state])
+      description: display(val)
     });
   };
 

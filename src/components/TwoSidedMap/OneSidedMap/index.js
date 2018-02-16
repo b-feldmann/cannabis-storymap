@@ -26,6 +26,8 @@ class OneSidedMap extends Component {
 
   /* optional customization of filling per state and calling custom callbacks per state */
   statesCustomConfig = (min, max) => {
+    console.log(min, max, this.props.data);
+
     const config = {};
     const stateKeys = Object.keys(this.props.data);
 
@@ -33,11 +35,19 @@ class OneSidedMap extends Component {
       return (val - min) / (max - min);
     }
 
+    function toState(string) {
+      let ret = '';
+      string.split(' ').forEach((str) => {
+        ret += str.charAt(0).toUpperCase() + str.toLowerCase().slice(1) + ' ';
+      });
+      return ret.substr(0, ret.length - 1);
+    }
+
     for (let index in stateKeys) {
       if (stateKeys.hasOwnProperty(index)) {
-        const code = resolveState(stateKeys[index]);
+        const code = resolveState(toState(stateKeys[index]));
         if (this.props.colors) {
-          config[code] = { fill: this.interpolate(this.props.colors[0], this.props.colors[1], normalize(this.props.data[stateKeys[index]])) };
+          config[code] = { fill: this.interpolate(this.props.colors[0], this.props.colors[1], normalize(this.props.data[stateKeys[index]]))};
         } else {
           console.log('bar');
           config[code] = { fill: this.interpolate('#FFFFFF', '#000000', normalize(this.props.data[stateKeys[index]])) };
