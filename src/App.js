@@ -19,7 +19,6 @@ class App extends Component {
         <ScrollContainer>
           <ScrollSection pageId={0}>
             {/*<UsaCannabisComparismPage/>*/}
-            {/*<UsaCannabisInfoPage/>*/}
             <CannKgPage/>
           </ScrollSection>
 
