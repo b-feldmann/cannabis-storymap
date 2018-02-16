@@ -52,7 +52,7 @@ export default class ConsumptionChartsPage extends Component {
                 <YAxis dataKey="state" type="category"/>
                 <Tooltip/>
                 <Legend/>
-                <Bar dataKey="pct" fill="#8884d8" name="Marijuana Use in the Past Year (Population percentage)">
+                <Bar dataKey="pct" fill="#98b2f6" name="Marijuana Use in the Past Year (Population percentage)">
                   <LabelList dataKey="legalStatus" content={renderLegalizationLabel} position="right"/>
                 </Bar>
               </BarChart>
@@ -65,7 +65,7 @@ export default class ConsumptionChartsPage extends Component {
                 <YAxis/>
                 <Tooltip/>
                 <Legend/>
-                <Bar dataKey="pct" fill="#8884d8" name="Marijuana Use in the Past Year (Population percentage)"/>
+                <Bar dataKey="pct" fill="#98b2f6" name="Marijuana Use in the Past Year (Population percentage)"/>
               </BarChart>
             </Col>
           </Row>
