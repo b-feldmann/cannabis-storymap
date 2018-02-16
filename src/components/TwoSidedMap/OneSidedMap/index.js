@@ -38,8 +38,10 @@ class OneSidedMap extends Component {
         const code = resolveState(stateKeys[index]);
         if (this.props.colors) {
           config[code] = { fill: this.interpolate(this.props.colors[0], this.props.colors[1], normalize(this.props.data[stateKeys[index]])) };
-        } else
+        } else {
+          console.log('bar');
           config[code] = { fill: this.interpolate('#FFFFFF', '#000000', normalize(this.props.data[stateKeys[index]])) };
+        }
       }
     }
 

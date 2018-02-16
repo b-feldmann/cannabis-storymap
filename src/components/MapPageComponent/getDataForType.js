@@ -22,6 +22,22 @@ import coc_2013 from './coc/coc_2013';
 import coc_2014 from './coc/coc_2014';
 import coc_2015 from './coc/coc_2015';
 
+import crime_2009 from './crime/crime_2009';
+import crime_2010 from './crime/crime_2010';
+import crime_2011 from './crime/crime_2011';
+import crime_2012 from './crime/crime_2012';
+import crime_2013 from './crime/crime_2013';
+import crime_2014 from './crime/crime_2014';
+import crime_2015 from './crime/crime_2015';
+
+import mental_2009 from './mental/mental_2009';
+import mental_2010 from './mental/mental_2010';
+import mental_2011 from './mental/mental_2011';
+import mental_2012 from './mental/mental_2012';
+import mental_2013 from './mental/mental_2013';
+import mental_2014 from './mental/mental_2014';
+import mental_2015 from './mental/mental_2015';
+
 const dict = {
   cannabis: {
     display: (val) => {
@@ -46,6 +62,30 @@ const dict = {
     2013: coc_2013,
     2014: coc_2014,
     2015: coc_2015,
+  },
+  crime: {
+    display: (val) => {
+      return `${Math.round(val * 1000) / 10}%`
+    },
+    2009: crime_2009,
+    2010: crime_2010,
+    2011: crime_2011,
+    2012: crime_2012,
+    2013: crime_2013,
+    2014: crime_2014,
+    2015: crime_2015,
+  },
+  mental: {
+    display: (val) => {
+      return `${Math.round(val * 1000) / 10}%`
+    },
+    2009: mental_2009,
+    2010: mental_2010,
+    2011: mental_2011,
+    2012: mental_2012,
+    2013: mental_2013,
+    2014: mental_2014,
+    2015: mental_2015,
   },
   traffic: {
     display: (val) => {

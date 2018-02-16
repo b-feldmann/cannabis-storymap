@@ -144,6 +144,8 @@ export default class MapPageComponent extends Component {
               <Option value="cannabis">Cannabis User</Option>
               <Option value="coc">Cocaine User</Option>
               <Option value="traffic">Traffic Incidents per 10.000 people</Option>
+              <Option value="mental">Mental Health Issues</Option>
+              <Option value="crime">Crime</Option>
             </Select>
           </Col>
           <Col span={8}>
@@ -154,6 +156,8 @@ export default class MapPageComponent extends Component {
               <Option value="cannabis">Cannabis User</Option>
               <Option value="coc">Cocaine User</Option>
               <Option value="traffic">Traffic Incidents per 10.000 people</Option>
+              <Option value="mental">Mental Health Issues</Option>
+              <Option value="crime">Crime</Option>
             </Select>
           </Col>
         </Row>
