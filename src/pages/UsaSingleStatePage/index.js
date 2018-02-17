@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 
-import { Table, Icon, Divider } from 'antd';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 
 import './styles.css'
-import Card from "antd/es/card/index";
 import Col from "antd/es/grid/col";
 import Row from "antd/es/grid/row";
 import SplitLayout from "../../components/SplitLayout";
@@ -25,30 +23,6 @@ const chartData = [
   { "year": 2014, "value": 0.027382999658584595 },
   { "year": 2015, "value": 0.02934199944138527 }
 ].map(obj => ({year: obj.year, value: obj.value*100}));
-
-const averageTimeseriesByStatus = [
-  {
-    "year": 2003,
-    "decriminalized": 0.040456000715494156,
-    "felony": 0.050456000715494156,
-    "legal": 0.060456000715494156,
-    "misdemeanor": 0.070456000715494156
-  },
-  {
-    "year": 2004,
-    "decriminalized": 0.045456000715494156,
-    "felony": 0.02456000715494156,
-    "legal": 0.050456000715494156,
-    "misdemeanor": 0.04456000715494156
-  },
-  {
-    "year": 2005,
-    "decriminalized": 0.035456000715494156,
-    "felony": 0.010456000715494156,
-    "legal": 0.070456000715494156,
-    "misdemeanor": 0.075456000715494156
-  }
-];
 
 export default class SingleStatePage extends Component {
   constructor(props) {

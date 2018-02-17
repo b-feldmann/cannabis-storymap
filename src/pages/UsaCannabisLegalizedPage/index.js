@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
 import './styles.css'
-import Row from "antd/es/grid/row";
-import Col from "antd/es/grid/col";
-import Card from "antd/es/card/index";
 
 import legalization_dates from './legalization_dates';
 
@@ -21,14 +18,14 @@ export default class UsaCannabisLegalizedPage extends Component {
     this.state = {};
 
     this.state.recreational = legalization_dates
-      .filter(state => state.recreational != "not")
+      .filter(state => state.recreational !== "not")
       .map(state => ({
         content: state.state,
         start: state.recreational
       }));
 
     this.state.medical = legalization_dates
-      .filter(state => state.medical != "not")
+      .filter(state => state.medical !== "not")
       .map(state => ({
         content: state.state,
         start: state.medical

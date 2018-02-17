@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Bar, BarChart, LabelList, Legend, Tooltip, XAxis, YAxis } from 'recharts';
 
 import SplitLayout from "../../components/SplitLayout";
 
@@ -24,23 +23,23 @@ export default class CommonBeliefsPage extends Component {
           <ul className="beliefs">
             <li>
               <div className="belief-details">
-                <img className="belief-icon" src={CarIcon} />
+                <img alt="car icon" className="belief-icon" src={CarIcon} />
                 <span>Traffic incidents</span>
                 <i className="fa fa-arrow-up negative" />
               </div>
             </li>
             <li>
-              <img className="belief-icon" src={BrainIcon} />
+              <img alt="brain icon" className="belief-icon" src={BrainIcon} />
               <span>Mental health</span>
               <i className="fa fa-arrow-down negative" />
             </li>
             <li>
-              <img className="belief-icon" src={GunIcon} />
+              <img alt="gun icon" className="belief-icon" src={GunIcon} />
               <span>Crime rates</span>
               <i className="fa fa-arrow-down positive" />
             </li>
             <li>
-              <img className="belief-icon" src={VitaminIcon} />
+              <img alt="vitamin icon" className="belief-icon" src={VitaminIcon} />
               <span>Cocaine usage</span>
               <i className="fa fa-arrow-up negative" />
             </li>

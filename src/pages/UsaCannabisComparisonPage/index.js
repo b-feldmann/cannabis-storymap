@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 
 import './styles.css'
 
-import { Select } from 'antd';
 import MapPageComponent from "../../components/MapPageComponent";
-
-const Option = Select.Option;
 
 export default class UsaCannabisComparismPage extends Component {
   render() {

@@ -6,7 +6,7 @@ import UsaCannabisInfoPage from './pages/UsaCannabisInfoPage';
 import PoliticalViewPage from "./pages/PoliticalViewPage";
 import { ScrollContainer, ScrollSection } from "./components/OnePageScroll";
 import UsaCannabisLegalizedPage from "./pages/UsaCannabisLegalizedPage";
-import UsaCannabisComparismPage from "./pages/UsaCannabisComparismPage";
+import UsaCannabisComparisonPage from "./pages/UsaCannabisComparisonPage";
 import ConsumptionChartsPage from "./pages/ConsumptionChartsPage";
 import SingleStatePage from "./pages/UsaSingleStatePage";
 import CommonBeliefsPage from "./pages/CommonBeliefsPage"
@@ -38,7 +38,7 @@ class App extends Component {
           </ScrollSection>
 
           <ScrollSection pageId={5}>
-            <UsaCannabisComparismPage/>
+            <UsaCannabisComparisonPage/>
           </ScrollSection>
 
           <ScrollSection pageId={6}>

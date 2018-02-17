@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './styles.css'
-import Row from "antd/es/grid/row";
 import SplitLayout from "../../components/SplitLayout";
 
 export default class CannKgPage extends Component {
