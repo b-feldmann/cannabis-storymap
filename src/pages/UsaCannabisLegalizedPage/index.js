@@ -39,9 +39,11 @@ export default class UsaCannabisLegalizedPage extends Component {
     const main = (
       <div className='center-container'>
         <div style={{width: '100%'}}>
-          <h1 style={{ color: '#000', 'padding-bottom': '120px' }}>Legalization of Cannabis for Recreational Use</h1>
-          <div align='justify'>
-            In the US, the Legalization of cannabis started in 2012 in Colorado and Washington. Hence we want to focus
+          <h1 style={{ color: '#000', 'padding-bottom': '120px' }}>Legalization of Cannabis in the US</h1>
+          <div align='center'>
+            To assess the effects a cannabis legalization in Germany will have, we take a look at what changed in the US after cannabis was legalized in some states.
+            <br/> <br/>
+            In the US, the legalization of cannabis started in 2012 in Colorado and Washington. Hence we want to focus
             on
             these two states.
             <br/>
