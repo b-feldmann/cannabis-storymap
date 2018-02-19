@@ -5,6 +5,8 @@ import Card from "antd/es/card/index";
 import Col from "antd/es/grid/col";
 import Row from "antd/es/grid/row";
 
+import CduCsu from "./cdu-csu.png";
+
 const { Meta } = Card;
 
 export default class PoliticalViewPage extends Component {
@@ -23,7 +25,7 @@ export default class PoliticalViewPage extends Component {
             <Col span={11} offset={0}>
             <Card type="inner">
               <Meta
-                avatar={<img alt="CDU/CSU" src="https://www.extremnews.com/images/full-91955be6c72c4a8bbbe1ca8cea0a29f5.png" style={{width: 50}} />}
+                avatar={<img alt="CDU/CSU" src={CduCsu} style={{width: 50}} />}
                 title="CDU/CSU"
                 description="CDU and CSU do not make statements on their views to cannabis in their election program for 2017. This suggest they do not want to have any changes to the current situation."
               />
