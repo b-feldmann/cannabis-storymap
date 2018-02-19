@@ -37,7 +37,7 @@ export default class CannKgPage extends Component {
 
     return (
       <div style={{
-        'background-image': 'url(https://upload.wikimedia.org/wikipedia/commons/0/0e/Cannabis_plants_in_front_of_the_Dhaulagiri_summit.jpg)',
+        'background-image': 'url(https://static.pexels.com/photos/606506/pexels-photo-606506.jpeg)',
         'background-size':'cover'
       }}>
         <SplitLayout title='' main={main} side={side}/>
