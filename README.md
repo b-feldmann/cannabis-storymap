@@ -1,3 +1,16 @@
+# Cannabis Storymap
+
+To view this storymap do the following:
+
+1. Clone the repository and install the requirements (NodeJS and contents of `server/requirements.txt`).
+2. In the `server/api/app.py`, adjust the database address, user and password (lines 7-9).
+3. Run `npm install` and `npm start` to start the development server for the React app.
+4. Run python `server/api/app.py` to start the python flask server.
+5. Navigate to the app running under [http://localhost:3000](http://localhost:3000).
+
+
+# React App Stock README
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
