@@ -18,15 +18,15 @@ export default class ConclusionPage extends Component {
   }
 
   render() {
-      const main = (
-      <div className='center-container'>
-        <div style={{width: '100%'}}>
-          <Row type='flex' gutter={16}>
+    const main = (
+      <div style={{ width: '100%' }}>
+        <Row type='flex' gutter={16}>
+          <div className='center-container-no-height'>
             <Col span={10} style={{ marginTop: 20 }}>
               <div className="belief-details">
-                <img alt="car icon" className="belief-icon" src={CarIcon} />
-               <h1>Traffic incidents</h1>
-                <i className="fa fa-arrow-up negative" />
+                <img alt="car icon" className="belief-icon" src={CarIcon}/>
+                <h1>Traffic incidents</h1>
+                <i className="fa fa-arrow-up negative"/>
                 <span> No clear effects visible. For example, Colorado has a comparably low traffic
                       incident rate that doesn't change much with increasing marijuana consumption.
                 </span>
@@ -34,9 +34,9 @@ export default class ConclusionPage extends Component {
             </Col>
             <Col span={10} style={{ marginTop: 20 }}>
               <div className="belief-details">
-                <img alt="brain icon" className="belief-icon" src={BrainIcon} />
+                <img alt="brain icon" className="belief-icon" src={BrainIcon}/>
                 <h1>Mental health</h1>
-                <i className="fa fa-arrow-down negative" />
+                <i className="fa fa-arrow-down negative"/>
                 <span>
                   No clear effects visible. Looking at the early legalizations in Colorado and
                   Washington, the amount of people reporting mental health issues seem completely
@@ -44,13 +44,15 @@ export default class ConclusionPage extends Component {
                 </span>
               </div>
             </Col>
-          </Row>
-          <Row type='flex' gutter={16}>
+          </div>
+        </Row>
+        <Row type='flex' gutter={16}>
+          <div className='center-container-no-height'>
             <Col span={10} style={{ marginTop: 20 }}>
               <div className="belief-details">
-                <img alt="gun icon" className="belief-icon" src={GunIcon} />
+                <img alt="gun icon" className="belief-icon" src={GunIcon}/>
                 <h1>Crime rates</h1>
-                <i className="fa fa-arrow-down positive" />
+                <i className="fa fa-arrow-down positive"/>
                 <span>
                   No clear effects visible. In Colorado for example, the amount of violent crimes
                   hardly changed at all over the observed years.
@@ -59,9 +61,9 @@ export default class ConclusionPage extends Component {
             </Col>
             <Col span={10} style={{ marginTop: 20 }}>
               <div className="belief-details">
-                <img alt="vitamin icon" className="belief-icon" src={VitaminIcon} />
+                <img alt="vitamin icon" className="belief-icon" src={VitaminIcon}/>
                 <h1>Cocaine usage</h1>
-                <i className="fa fa-arrow-up negative" />
+                <i className="fa fa-arrow-up negative"/>
                 <span>
                   No clear effects visible. Colorado as an example has
                   a large variance in the amount of people who reported using cocaine in the past year
@@ -69,31 +71,32 @@ export default class ConclusionPage extends Component {
                 </span>
               </div>
             </Col>
-          </Row>
-        </div>
+          </div>
+        </Row>
       </div>
     );
 
-      const side = (
-          <div>
+    const side = (
+      <div>
         <h1>Conclusion</h1>
-            We only found weak to no correlations between use of cannabis and the other factors.
-            Even on a single state level, there are no clear changes to detect based on the legalization
-            status.
-            <br/>
-            This could be due to the fact that the legalization process is more of an ongoing process.
-            Consumption of marijuana always changes and the legalization status has not necessarily
-            the highest influence on this. In order to make more meaningful statements, more long-term data
-            are needed.
-            <br/> <br/>
-            If you want to read more on what effects could result from cannabis consumption,
-            more information can be found in the <a href="https://www.drogenbeauftragte.de/presse/pressekontakt-und-mitteilungen/2017/2017-4-quartal/aktuelle-studie-des-klinikums-der-universitaet-muenchen-cannabis-potential-und-risiken-eine-wissenschaftliche-analyse-capris.html">
-             CaPRis study</a>.
+        We only found weak to no correlations between use of cannabis and the other factors.
+        Even on a single state level, there are no clear changes to detect based on the legalization
+        status.
+        <br/>
+        This could be due to the fact that the legalization process is more of an ongoing process.
+        Consumption of marijuana always changes and the legalization status has not necessarily
+        the highest influence on this. In order to make more meaningful statements, more long-term data
+        are needed.
+        <br/> <br/>
+        If you want to read more on what effects could result from cannabis consumption,
+        more information can be found in the <a
+        href="https://www.drogenbeauftragte.de/presse/pressekontakt-und-mitteilungen/2017/2017-4-quartal/aktuelle-studie-des-klinikums-der-universitaet-muenchen-cannabis-potential-und-risiken-eine-wissenschaftliche-analyse-capris.html">
+        CaPRis study</a>.
       </div>
-      );
+    );
 
     return (
-      <SplitLayout title='Effect of Drug Regulations' main={main} side={side} />
+      <SplitLayout title='Effect of Drug Regulations' main={main} side={side}/>
     );
   }
 }

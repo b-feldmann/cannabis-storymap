@@ -4,8 +4,7 @@ import './styles.css'
 import Row from "antd/es/grid/row";
 import Col from "antd/es/grid/col";
 
-import OneSidedMap from "../../components/TwoSidedMap/OneSidedMap";
-import TwoSidedMap from "../../components/TwoSidedMap";
+import OneSidedMap from "../OneSidedMap";
 import Slider from "antd/es/slider/index";
 import getDataForType from './getDataForType';
 
@@ -57,9 +56,9 @@ export default class MapPageComponent extends Component {
 
     const keys = Object.keys(data);
     let val = data[state];
-    for(let index in keys){
-      if(keys.hasOwnProperty(index)){
-        if(toState(keys[index]) === state){
+    for (let index in keys) {
+      if (keys.hasOwnProperty(index)) {
+        if (toState(keys[index]) === state) {
           val = data[keys[index]];
         }
       }

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-// import USAMap from "react-usa-map";
-
 import sizeMe from 'react-sizeme'
 import { colorInterpolation } from 'color-interpolator';
 import { resolveState, resolveStateCode } from './stateCodes';
 import './styles.css';
-import USAMap from "../../USAMap";
+import USAMap from "../USAMap";
+
+// import USAMap from "react-usa-map";
 
 class OneSidedMap extends Component {
   constructor(props) {
@@ -26,8 +26,6 @@ class OneSidedMap extends Component {
 
   /* optional customization of filling per state and calling custom callbacks per state */
   statesCustomConfig = (min, max) => {
-    console.log(min, max, this.props.data);
-
     const config = {};
     const stateKeys = Object.keys(this.props.data);
 
@@ -47,7 +45,7 @@ class OneSidedMap extends Component {
       if (stateKeys.hasOwnProperty(index)) {
         const code = resolveState(toState(stateKeys[index]));
         if (this.props.colors) {
-          config[code] = { fill: this.interpolate(this.props.colors[0], this.props.colors[1], normalize(this.props.data[stateKeys[index]]))};
+          config[code] = { fill: this.interpolate(this.props.colors[0], this.props.colors[1], normalize(this.props.data[stateKeys[index]])) };
         } else {
           console.log('bar');
           config[code] = { fill: this.interpolate('#FFFFFF', '#000000', normalize(this.props.data[stateKeys[index]])) };

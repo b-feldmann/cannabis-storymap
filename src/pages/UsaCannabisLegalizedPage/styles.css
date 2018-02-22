@@ -5,9 +5,14 @@
     justify-content: center;
 }
 
+.center-container-no-height {
+    display: flex;
+    justify-content: center;
+}
+
 .center-container-full {
     height: 100vh;
     display: flex;
-    align-items: center;
+    /*align-items: center;*/
     justify-content: center;
 }

@@ -3,3 +3,24 @@
     width: 100%;
     bottom: 140px;
 }
+
+.two-sided-map-slider {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.two-sided-map-slider > .ant-slider > .ant-slider-rail {
+    visibility: hidden;
+}
+
+.two-sided-map-slider > .ant-slider > .ant-slider-track {
+    visibility: hidden;
+    background-color: transparent;
+}
+
+.two-sided-map-slider > .ant-slider > .ant-slider-handle {
+    width: 14px;
+    height: 32px;
+    border-radius: 0px;
+}

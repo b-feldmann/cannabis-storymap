@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
+
+import { fetchMjData } from './actions/apiActions';
 
 import CannKgPage from './pages/CannKgPage';
 import UsaCannabisInfoPage from './pages/UsaCannabisInfoPage';
@@ -14,6 +17,12 @@ import ConclusionPage from "./pages/ConclusionPage";
 
 
 class App extends Component {
+  constructor(props){
+    super(props);
+
+    props.fetchMjData();
+  }
+
   render() {
     return (
       <div className="App">
@@ -35,7 +44,7 @@ class App extends Component {
           </ScrollSection>
 
           <ScrollSection pageId={4}>
-            <CommonBeliefsPage />
+            <CommonBeliefsPage/>
           </ScrollSection>
 
           <ScrollSection pageId={5}>
@@ -59,4 +68,11 @@ class App extends Component {
   }
 }
 
-export default App;
+
+function mapStateToProps(state) {
+  return {
+    api: state.api
+  }
+}
+
+export default connect(mapStateToProps, { fetchMjData })(App);
