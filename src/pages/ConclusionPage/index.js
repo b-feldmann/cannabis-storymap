@@ -86,15 +86,14 @@ export default class ConclusionPage extends Component {
             the highest influence on this. In order to make more meaningful statements, more long-term data
             are needed.
             <br/> <br/>
-            If you want to read more on what effects cannabis consumption has, more information can
-            be found in the
-            <a href="https://www.drogenbeauftragte.de/presse/pressekontakt-und-mitteilungen/2017/2017-4-quartal/aktuelle-studie-des-klinikums-der-universitaet-muenchen-cannabis-potential-und-risiken-eine-wissenschaftliche-analyse-capris.html">
-            CaPRis study</a>.
+            If you want to read more on what effects could result from cannabis consumption,
+            more information can be found in the <a href="https://www.drogenbeauftragte.de/presse/pressekontakt-und-mitteilungen/2017/2017-4-quartal/aktuelle-studie-des-klinikums-der-universitaet-muenchen-cannabis-potential-und-risiken-eine-wissenschaftliche-analyse-capris.html">
+             CaPRis study</a>.
       </div>
       );
 
     return (
-      <SplitLayout title='Conclusion' main={main} side={side} />
+      <SplitLayout title='Effect of Drug Regulations' main={main} side={side} />
     );
   }
 }
