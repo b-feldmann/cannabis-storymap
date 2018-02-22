@@ -1,0 +1,36 @@
+.beliefs {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #f5f5f5;
+}
+
+.beliefs li {
+    text-align: left;
+    border-bottom: 1px solid #f5f5f5;
+    padding: 0.5em;
+    font-size: 2em;
+}
+
+.beliefs li:last-child {
+    border-bottom: none;
+}
+
+.beliefs span {
+    margin-right: 20px;
+}
+
+.belief-icon {
+    width: 55px;
+    height: 55px;
+    padding: 5px;
+    margin-right: 20px;
+}
+
+.positive {
+    color: #3A7734;
+}
+
+.negative {
+    color: #9C1A1C;
+}

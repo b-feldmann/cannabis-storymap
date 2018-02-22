@@ -9,7 +9,8 @@ import UsaCannabisLegalizedPage from "./pages/UsaCannabisLegalizedPage";
 import UsaCannabisComparisonPage from "./pages/UsaCannabisComparisonPage";
 import ConsumptionChartsPage from "./pages/ConsumptionChartsPage";
 import SingleStatePage from "./pages/UsaSingleStatePage";
-import CommonBeliefsPage from "./pages/CommonBeliefsPage"
+import CommonBeliefsPage from "./pages/CommonBeliefsPage";
+import ConclusionPage from "./pages/ConclusionPage";
 
 
 class App extends Component {
@@ -46,6 +47,10 @@ class App extends Component {
           </ScrollSection>
 
           <ScrollSection pageId={7}>
+            <ConclusionPage/>
+          </ScrollSection>
+
+          <ScrollSection pageId={8}>
             <PoliticalViewPage/>
           </ScrollSection>
         </ScrollContainer>
