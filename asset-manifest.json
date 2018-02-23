@@ -1,10 +1,11 @@
 {
-  "main.css": "static/css/main.a58dfe44.css",
-  "main.css.map": "static/css/main.a58dfe44.css.map",
-  "main.js": "static/js/main.4efd66cd.js",
-  "main.js.map": "static/js/main.4efd66cd.js.map",
-  "static\\media\\brain.svg": "static/media/brain.2129cc73.svg",
+  "main.css": "static/css/main.399ebc74.css",
+  "main.css.map": "static/css/main.399ebc74.css.map",
+  "main.js": "static/js/main.389a1174.js",
+  "main.js.map": "static/js/main.389a1174.js.map",
+  "static\\media\\brain.svg": "static/media/brain.e57f4c29.svg",
   "static\\media\\car.svg": "static/media/car.18a8a8d6.svg",
+  "static\\media\\cdu-csu.png": "static/media/cdu-csu.5313d686.png",
   "static\\media\\gun.svg": "static/media/gun.edcdbc47.svg",
-  "static\\media\\vitamin.svg": "static/media/vitamin.02c6a460.svg"
+  "static\\media\\vitamin.svg": "static/media/vitamin.6cbbf6cd.svg"
 }
