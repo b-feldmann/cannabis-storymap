@@ -11,12 +11,7 @@ import Row from "antd/es/grid/row";
 
 import "./styles.css";
 
-
 export default class ConclusionPage extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const main = (
       <div style={{ width: '100%' }}>

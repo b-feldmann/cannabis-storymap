@@ -8,11 +8,12 @@ import OneSidedMap from "../OneSidedMap";
 import Slider from "antd/es/slider/index";
 import getDataForType from './getDataForType';
 
-import { Select } from 'antd';
 import SplitLayout from "../../components/SplitLayout";
 import { notification } from "antd/lib/index";
+import { Select } from 'antd';
 
 const Option = Select.Option;
+
 
 export default class MapPageComponent extends Component {
   constructor(props) {
