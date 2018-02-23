@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 
-import { fetchMjData } from './actions/apiActions';
+import { fetchMjData, fetchCocData, fetchCrimeData, fetchMentalData, fetchTrafficData } from './actions/apiActions';
 
 import CannKgPage from './pages/CannKgPage';
 import UsaCannabisInfoPage from './pages/UsaCannabisInfoPage';
@@ -17,10 +17,14 @@ import ConclusionPage from "./pages/ConclusionPage";
 
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     props.fetchMjData();
+    props.fetchCocData();
+    props.fetchCrimeData();
+    props.fetchMentalData();
+    props.fetchTrafficData();
   }
 
   render() {
@@ -40,7 +44,7 @@ class App extends Component {
           </ScrollSection>
 
           <ScrollSection pageId={3}>
-            <UsaCannabisInfoPage/>
+            <UsaCannabisInfoPage data={this.props.api}/>
           </ScrollSection>
 
           <ScrollSection pageId={4}>
@@ -48,11 +52,11 @@ class App extends Component {
           </ScrollSection>
 
           <ScrollSection pageId={5}>
-            <UsaCannabisComparisonPage/>
+            <UsaCannabisComparisonPage data={this.props.api}/>
           </ScrollSection>
 
           <ScrollSection pageId={6}>
-            <SingleStatePage/>
+            <SingleStatePage data={this.props.api}/>
           </ScrollSection>
 
           <ScrollSection pageId={7}>
@@ -75,4 +79,10 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { fetchMjData })(App);
+export default connect(mapStateToProps, {
+  fetchMjData,
+  fetchCocData,
+  fetchCrimeData,
+  fetchMentalData,
+  fetchTrafficData
+})(App);

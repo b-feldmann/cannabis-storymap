@@ -35,7 +35,6 @@ export default class MapPageComponent extends Component {
   };
 
   onChangeDimension = (dimen) => {
-    console.log(dimen);
     this.setState({ childWidth: dimen.width, childHeight: dimen.height });
   };
 
@@ -82,8 +81,8 @@ export default class MapPageComponent extends Component {
       2015: '2015'
     };
 
-    const leftData = getDataForType(this.state.leftSelected, this.state.year);
-    const rightData = getDataForType(this.state.rightSelected, this.state.year);
+    const leftData = getDataForType(this.props.data, this.state.leftSelected, this.state.year);
+    const rightData = getDataForType(this.props.data, this.state.rightSelected, this.state.year);
 
     const clipPos = `${this.state.childWidth / (100 / this.state.clipPosition)}px`;
 

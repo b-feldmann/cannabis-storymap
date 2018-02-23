@@ -18,7 +18,7 @@ export default class UsaCannabisInfoPage extends Component {
     );
 
     return (
-      <MapPageComponent title='Percentage of cannabis users over the years' side={side}/>
+      <MapPageComponent title='Percentage of cannabis users over the years' side={side} data={this.props.data}/>
     );
   }
 }

@@ -18,7 +18,7 @@ export default class UsaCannabisComparismPage extends Component {
     );
 
     return (
-      <MapPageComponent title='Cannabis in Comparison' side={side} double={true}/>
+      <MapPageComponent title='Cannabis in Comparison' side={side} double={true} data={this.props.data}/>
     );
   }
 }
