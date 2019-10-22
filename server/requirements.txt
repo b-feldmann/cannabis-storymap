@@ -5,9 +5,9 @@
 #    pip-compile --output-file requirements.txt requirements.in
 #
 click==6.7                # via flask
-Flask==0.12.2
+flask==1.0
 itsdangerous==0.24        # via flask
-Jinja2==2.10              # via flask
-MarkupSafe==1.0           # via jinja2
+jinja2==2.10              # via flask
+markupsafe==1.0           # via jinja2
 pyhdb==0.3.3
-Werkzeug==0.14.1          # via flask
+werkzeug==0.14.1          # via flask
