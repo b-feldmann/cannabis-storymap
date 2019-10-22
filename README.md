@@ -1,7 +1,7 @@
 # Cannabis Storymap
 
 Student research project.
-The aim of the project was to collect, analyse and visualise health-related data within 4 days.
+The aim of the project was to collect, analyse and visualise health-related data within a week.
 As a prerequisite, the data must have a geographical reference.
 
 We focused on cannabis use in the USA and compared it with the use of other drugs or the number of crimes.
